@@ -10,8 +10,8 @@
 #define zschat_MSPrivate_h
 
 #import "MServer.h"
-#import "MXMLParsers.h"
-#import "MHTTPRequestBuilder.h"
+#import "MJSONParsers.h"
+#import "MJSONRequestBuilder.h"
 
 #define DEFAULTWSTIMEOUT            20.0
 #define DEFAULTGETTIMEOUT           60.0
@@ -41,8 +41,8 @@ enum errorKeys {
 + (id) MError:(NSString *)errormsg withCode:(NSInteger)code withString:(NSString *)errorString;
 + (id) MError:(NSString *)errormsg withCode:(NSInteger)code withObject:(NSObject *)errorObject;
 @property (strong,nonatomic) NSOperationQueue * webServiceQueue;
-@property (strong,nonatomic) MXMLParsers * XMLParsers;
-@property (strong,nonatomic) MHTTPRequestBuilder * HTTPRequestBuilder;
+@property (strong,nonatomic) MJSONParsers * JSONParsers;
+@property (strong,nonatomic) MJSONRequestBuilder * JSONRequestBuilder;
 @end
 
 #endif

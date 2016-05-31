@@ -8,11 +8,10 @@
 
 #import "MServer.h"
 #import "MServerPrivate.h"
-#import "MHTTPRequestBuilder.h"
-#import "MSoapXMLBuilder.h"
-#import "MXMLParsers.h"
+#import "MJSONRequestBuilder.h"
+#import "MJSONBuilder.h"
+#import "MJSONParsers.h"
 #import "MWSWorker.h"
-//#import "MSoapXMLBuilder.h"
 
 #import "MBase64.h"
 #import "ZSMsgView.h"
@@ -25,10 +24,10 @@ static MServer * mserver = nil;
 //static NSMutableDictionary * muser = nil;
 
 @implementation MServer
-@synthesize HTTPRequestBuilder;
+@synthesize JSONRequestBuilder;
 @synthesize webServiceQueue;
 @synthesize user;
-@synthesize XMLParsers;
+@synthesize JSONParsers;
 
 NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
 
@@ -66,11 +65,11 @@ NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
            mserver.user = [[NSMutableDictionary alloc] init];
  //           mserver.user[kUSERAPPLOGINCOMMAND] = @"";
             mserver.user[USER_APPUSERDATA] = [[NSMutableDictionary alloc] init];
-            [[mserver HTTPRequestBuilder] setHeaderFieldForKey:kCONTENTTYPEHEADERFIELD withValue:kCONTENTTYPE];
-            [[mserver HTTPRequestBuilder] setHeaderFieldForKey:kCACHECONTROLHEADERFIELD withValue:kCACHECONTROL];
-            [[mserver HTTPRequestBuilder] setHeaderFieldForKey:kCLIENTIDHEADERFIELD withValue:mserver.user[kCLIENTID] ];
-            [[mserver HTTPRequestBuilder] setHeaderFieldForKey:kAPPLICATIONNAMEHEADERFIELD withValue:kUNDEFINED];
-            [[mserver HTTPRequestBuilder] setHeaderFieldForKey:kMSGSERIALHEADERFIELD withValue:@"0"];
+            [[mserver JSONRequestBuilder] setHeaderFieldForKey:kCONTENTTYPEHEADERFIELD withValue:kCONTENTTYPE];
+            [[mserver JSONRequestBuilder] setHeaderFieldForKey:kCACHECONTROLHEADERFIELD withValue:kCACHECONTROL];
+            [[mserver JSONRequestBuilder] setHeaderFieldForKey:kCLIENTIDHEADERFIELD withValue:mserver.user[kCLIENTID] ];
+            [[mserver JSONRequestBuilder] setHeaderFieldForKey:kAPPLICATIONNAMEHEADERFIELD withValue:kUNDEFINED];
+            [[mserver JSONRequestBuilder] setHeaderFieldForKey:kMSGSERIALHEADERFIELD withValue:@"0"];
         }
     }
     return mserver;
@@ -116,13 +115,13 @@ NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
 {
     [MServer getUser][USER_DEFAULTSERVERIP] = pHost;
     [MServer getUser][USER_DEFAULTSERVERPORT] = [NSNumber numberWithInteger:pPort];
-    [[mserver HTTPRequestBuilder] setConnetionToHost:pHost withPort:pPort];
-    [[mserver HTTPRequestBuilder] setHeaderFieldForKey:kAPPLICATIONNAMEHEADERFIELD withValue:application];
-    [[mserver HTTPRequestBuilder] setHeaderFieldForKey:kAUTHORISATIONHEADERFIELD withValue:[MServer getUser][kUSERAUTHORISATIONSTRING]];
-    [[mserver HTTPRequestBuilder] setHeaderFieldForKey:kCONTENTTYPEHEADERFIELD withValue:kCONTENTTYPE];
-    [[mserver HTTPRequestBuilder] setHeaderFieldForKey:kCACHECONTROLHEADERFIELD withValue:kCACHECONTROL];
-    [[mserver HTTPRequestBuilder] setHeaderFieldForKey:kCLIENTIDHEADERFIELD withValue:[MServer getUser][kCLIENTID]];
-    [[mserver HTTPRequestBuilder] setHeaderFieldForKey:kMSGSERIALHEADERFIELD withValue:@"0"];
+    [[mserver JSONRequestBuilder] setConnetionToHost:pHost withPort:pPort];
+    [[mserver JSONRequestBuilder] setHeaderFieldForKey:kAPPLICATIONNAMEHEADERFIELD withValue:application];
+    [[mserver JSONRequestBuilder] setHeaderFieldForKey:kAUTHORISATIONHEADERFIELD withValue:[MServer getUser][kUSERAUTHORISATIONSTRING]];
+    [[mserver JSONRequestBuilder] setHeaderFieldForKey:kCONTENTTYPEHEADERFIELD withValue:kCONTENTTYPE];
+    [[mserver JSONRequestBuilder] setHeaderFieldForKey:kCACHECONTROLHEADERFIELD withValue:kCACHECONTROL];
+    [[mserver JSONRequestBuilder] setHeaderFieldForKey:kCLIENTIDHEADERFIELD withValue:[MServer getUser][kCLIENTID]];
+    [[mserver JSONRequestBuilder] setHeaderFieldForKey:kMSGSERIALHEADERFIELD withValue:@"0"];
     if ([MServer getUser][USER_MSGSERIAL] == nil) [MServer getUser][USER_MSGSERIAL] = [[NSNumber alloc] initWithLongLong:0];
 }
 
@@ -138,7 +137,7 @@ NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
     muser[USER_PASSWORD] = pPassword;
     muser[kUSERMD5PASSWORD] = MD5StringOfString(pPassword);
     muser[kUSERAUTHORISATIONSTRING] = [MBase64 encodeStr:[NSString stringWithFormat:@"%@:%@",pUserName,muser[kUSERMD5PASSWORD]]];
-    [[mserver HTTPRequestBuilder] setHeaderFieldForKey:kAUTHORISATIONHEADERFIELD withValue:muser[kUSERAUTHORISATIONSTRING]];
+    [[mserver JSONRequestBuilder] setHeaderFieldForKey:kAUTHORISATIONHEADERFIELD withValue:muser[kUSERAUTHORISATIONSTRING]];
     [mserver setUser:muser];
 }
 
@@ -153,10 +152,10 @@ NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
 //    [mserver setWebServiceQueue:[[NSOperationQueue alloc] init]];
     [webServiceQueue setMaxConcurrentOperationCount:2];
     [MBase64 initialize];
-    [mserver setHTTPRequestBuilder:[[MHTTPRequestBuilder alloc] init]];
-    [[mserver HTTPRequestBuilder] setModuleName:kMODULENAME];
-//    [[mserver HTTPRequestBuilder] setConnetionToHost:DEFAULTHOST withPort:DEFAULTPORT];
-    [mserver setXMLParsers:[[MXMLParsers alloc] init]];
+    [mserver setJSONRequestBuilder:[[MJSONRequestBuilder alloc] init]];
+    [[mserver JSONRequestBuilder] setModuleName:kMODULENAME];
+//    [[mserver JSONRequestBuilder] setConnetionToHost:DEFAULTHOST withPort:DEFAULTPORT];
+    [mserver setJSONParsers:[[MJSONParsers alloc] init]];
 	return mserver;
 }
 
@@ -167,7 +166,7 @@ NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
 
 + (id) Login:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeout:(NSTimeInterval)pTimeout
 {
-    return [self Request:@"Login" withData:kSOAPBody(Login, @"", pMessage) onDelegate:pId onSelector:pSelector withTimeOut:pTimeout];
+    return [self Request:@"/v1/auth/priv/login" withData:kSOAPBody(Login, @"", pMessage) onDelegate:pId onSelector:pSelector withTimeOut:pTimeout];
 }
 
 + (id) SaveUserProfile:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector
@@ -187,24 +186,24 @@ NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
 + (id) Register:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector
 {
    [MServer getUser][kCLIENTID] = @"0";
-   [[mserver HTTPRequestBuilder] setHeaderFieldForKey:kCLIENTIDHEADERFIELD withValue:[MServer getUser][kCLIENTID]];
+   [[mserver JSONRequestBuilder] setHeaderFieldForKey:kCLIENTIDHEADERFIELD withValue:[MServer getUser][kCLIENTID]];
    return [self Register:pMessage onDelegate:pId onSelector:pSelector withTimeout:DEFAULTWSTIMEOUT];
 }
 
 + (id) Register:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeout:(NSTimeInterval)pTimeout
 {
-    return [self Request:@"Register" withData:kSOAPBody(Register, kXMLRegisterBody(([MServer getUser][USER_EMAIL])), pMessage) onDelegate:pId onSelector:pSelector withTimeOut:pTimeout];
+    return [self Request:@"/v1/auth/priv/register" withData:kSOAPBody(Register, kXMLRegisterBody(([MServer getUser][USER_EMAIL])), pMessage) onDelegate:pId onSelector:pSelector withTimeOut:pTimeout];
 }
 
-+ (id) Request:(NSString *)pSoapFunction withData:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector
++ (id) Request:(NSString *)pPath method:(NSString *)pMethod withData:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector
 {
-    return [self Request:pSoapFunction withData:pMessage onDelegate:pId onSelector:pSelector withTimeOut:DEFAULTWSTIMEOUT];
+    return [self Request:pPath method:pMethod withData:pMessage onDelegate:pId onSelector:pSelector withTimeOut:DEFAULTWSTIMEOUT];
 }
 
-+ (id) Request:(NSString *)pSoapFunction withData:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeOut:(NSTimeInterval)pTimeout
++ (id) Request:(NSString *)pPath method:(NSString *)pMethod withData:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeOut:(NSTimeInterval)pTimeout
 {
-    NSURLRequest *request = [[mserver HTTPRequestBuilder] createHTTPSoapRequest:pSoapFunction withData:pMessage withTimeout:pTimeout];
-    NSLog(@"Soap body to be sent:%@",pMessage);
+    NSURLRequest *request = [[mserver JSONRequestBuilder] createJSONRequest:pPath method:pMethod withData:pMessage withTimeout:pTimeout];
+    NSLog(@"JSON body to be sent:%@",pMessage);
     MWSWorker * worker = [[MWSWorker alloc] initMWSWorker:request onDelegate:pId onThread:[NSThread currentThread] onSelector:pSelector];
     return worker;
 }

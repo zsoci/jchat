@@ -86,7 +86,7 @@ NSString * const kGETIPREQUEST =  @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n
 
                             IMP imp = [MXMLParsers methodForSelector:selector];
                             id (*func)(id, SEL, NSArray *) = (void *)imp;
-                            [self setWsresult:func([[MServer getServer] XMLParsers], selector, [node children])];
+                            [self setWsresult:func([[MServer getServer] JSONParsers], selector, [node children])];
                             [senddelegate performSelector:pSenderSelector onThread:pSenderThread withObject:self waitUntilDone:YES];
                         }
                         else
