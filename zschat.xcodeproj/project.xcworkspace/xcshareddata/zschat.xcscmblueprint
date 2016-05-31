@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2A74BACA291571007D093310C54E65D91FFA84F4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "0080698e-509d-11e3-9c0f-375b80a92570++4179" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "2A74BACA291571007D093310C54E65D91FFA84F4" : 0,
+    "0080698e-509d-11e3-9c0f-375b80a92570++4179" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C1E0705C-31C1-4AE6-A2A3-1CD1D9F33BAC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "2A74BACA291571007D093310C54E65D91FFA84F4" : "jchat\/",
+    "0080698e-509d-11e3-9c0f-375b80a92570++4179" : "Zschat"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "zschat",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "zschat.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.0.210\/Main",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0080698e-509d-11e3-9c0f-375b80a92570++4179"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/zsoci.no-ip.biz:30000\/zsoci\/jchat.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2A74BACA291571007D093310C54E65D91FFA84F4"
+    }
+  ]
+}

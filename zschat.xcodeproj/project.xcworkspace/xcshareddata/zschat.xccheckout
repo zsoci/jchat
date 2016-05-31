@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C1E0705C-31C1-4AE6-A2A3-1CD1D9F33BAC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>zschat</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0080698e-509d-11e3-9c0f-375b80a92570++4179</key>
+		<string>svn://192.168.0.210/Main/Zschat</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>zschat.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0080698e-509d-11e3-9c0f-375b80a92570++4179</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>0080698e-509d-11e3-9c0f-375b80a92570++4179</key>
+		<string>svn://192.168.0.210/Main</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>svn://192.168.0.210/Main/Zschat/zschat.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0080698e-509d-11e3-9c0f-375b80a92570++4179</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0080698e-509d-11e3-9c0f-375b80a92570++4179</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Zschat</string>
+		</dict>
+	</array>
+</dict>
+</plist>
