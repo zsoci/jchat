@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:zschat.xcodeproj">
+      location = "self:/Users/zsoci/Projects/jchat/jchat.xcodeproj">
    </FileRef>
 </Workspace>

@@ -12,8 +12,8 @@
 #import "utilities.h"
 #import "ProgressHUD.h"
 #import "Common.h"
-#import "SMXMLDocument.h"
-#import "MXMLParsers.h"
+//#import "SMXMLDocument.h"
+#import "MJSONParsers.h"
 #import "AppDelegate.h"
 
 @interface ChatRoomsViewController ()
@@ -62,12 +62,12 @@
     else
     {
         NSLog(@"Got login response data:%@",anObject);
-        NSArray * nodes = anObject;
-        for (SMXMLElement * node in nodes)
-        {
-            if ([@"sNickName" ISNODENAME]) [MServer getUser][USER_NICKNAME] = [node value];
-            else NSLog(NODE_NOT_PROCESSED,[node name]);
-        }
+//        NSArray * nodes = anObject;
+//        for (SMXMLElement * node in nodes)
+//        {
+//            if ([@"sNickName" ISNODENAME]) [MServer getUser][USER_NICKNAME] = [node value];
+//            else NSLog(NODE_NOT_PROCESSED,[node name]);
+//        }
         [ProgressHUD showSuccess:[NSString stringWithFormat:@"Welcome back %@!", [MServer getUser][USER_NICKNAME]]];
         [MServer saveUserdefaults];
         [myAppDelegate getMessages:@""];

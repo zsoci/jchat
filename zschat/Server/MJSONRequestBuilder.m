@@ -35,7 +35,8 @@ NSMutableDictionary * headerFields;
 #define kCONTENTLENGTH              @"Content-Length"
 #define kSOAPACTIONHEADERFIELD      @"SOAPAction"
 //#define kXGAMECLIENTHEADERFIELD     @"X-Game-Client"
-#define kREQUESTEDURLFORMAT         @"http://%@:%tu/%@"
+#define kREQUESTEDURLFORMAT         @"http://%@:%tu"
+//#define kREQUESTEDURLFORMAT         @"http://%@:%tu/%@"
 #define kSOAPACTIONFORMAT           @"http://%@/%@"
 //#define kGETACTION                  @"Get"
 //#define kXGAMECLIENT                @"BridgeIsland SOFTIC iPad/1.4"
@@ -69,7 +70,8 @@ NSMutableDictionary * headerFields;
 
 - (void) setURLString
 {
-    self.requestedURLString = [NSString stringWithFormat:kREQUESTEDURLFORMAT, host, port, moduleName];
+//    self.requestedURLString = [NSString stringWithFormat:kREQUESTEDURLFORMAT, host, port, moduleName];
+    self.requestedURLString = [NSString stringWithFormat:kREQUESTEDURLFORMAT, host, port];
 }
 
 - (void) setConnetionToHost:(NSString *)pHost withPort:(NSInteger) pPort

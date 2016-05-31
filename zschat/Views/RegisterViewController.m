@@ -6,9 +6,9 @@
 //  Copyright (c) 2014. Zsolt Laky. All rights reserved.
 //
 #import "MServer.h"
-#import "MXMLParsers.h"
+//#import "MXMLParsers.h"
 #import "Common.h"
-#import "SMXMLDocument.h"
+//#import "SMXMLDocument.h"
 #import "RegisterViewController.h"
 #import "ProgressHUD.h"
 #import "ZSMsgView.h"
@@ -104,12 +104,12 @@
     else
     {
         NSLog(@"Got registerresponse:%@",anObject);
-        NSArray * nodes = anObject;
-        for (SMXMLElement * node in nodes)
-        {
-            if ([@"sNickName" ISNODENAME]) [MServer getUser][USER_NICKNAME] = [node value];
-            else NSLog(NODE_NOT_PROCESSED,[node name]);
-        }
+//        NSArray * nodes = anObject;
+//        for (SMXMLElement * node in nodes)
+//        {
+//            if ([@"sNickName" ISNODENAME]) [MServer getUser][USER_NICKNAME] = [node value];
+//            else NSLog(NODE_NOT_PROCESSED,[node name]);
+//        }
         [ProgressHUD showSuccess:[NSString stringWithFormat:@"Welcome %@!", [MServer getUser][USER_NICKNAME]]];
         [MServer saveUserdefaults];
         [myAppDelegate getMessages:@""];

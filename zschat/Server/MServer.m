@@ -105,11 +105,11 @@ NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
     
 }
 
-+ (id) GetMessages:(NSString *)pMessage messageNr:(NSNumber *)messageNr onDelegate:(id)pId onSelector:(SEL)pSelector;
-{
-    return [self Request:@"FetchMessages" withData:kSOAPBody(FetchMessages,kXMLFetchMessagesBody(messageNr),pMessage) onDelegate:pId onSelector:pSelector withTimeOut:DEFAULTGETTIMEOUT];
-}
-//return [self Request:@"Login" withData:kSOAPBody(Login, @"", pMessage) onDelegate:pId onSelector:pSelector withTimeOut:pTimeout];
+//+ (id) GetMessages:(NSString *)pMessage messageNr:(NSNumber *)messageNr onDelegate:(id)pId onSelector:(SEL)pSelector;
+//{
+//    return [self Request:@"FetchMessages" withData:kSOAPBody(FetchMessages,kXMLFetchMessagesBody(messageNr),pMessage) onDelegate:pId onSelector:pSelector withTimeOut:DEFAULTGETTIMEOUT];
+//}
+////return [self Request:@"Login" withData:kSOAPBody(Login, @"", pMessage) onDelegate:pId onSelector:pSelector withTimeOut:pTimeout];
 
 + (void) setup:(NSString *)pHost withPort:(NSInteger) pPort withApp:(NSString *)application
 {
@@ -166,22 +166,31 @@ NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
 
 + (id) Login:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeout:(NSTimeInterval)pTimeout
 {
-    return [self Request:@"/v1/auth/priv/login" withData:kSOAPBody(Login, @"", pMessage) onDelegate:pId onSelector:pSelector withTimeOut:pTimeout];
+    return [self Request: @"/v1/auth/priv/login"
+                  method: kPOST
+                withData: kLoginBody(([MServer getUser][USER_USERNAME]),
+                                     ([MServer getUser][USER_PASSWORD]),
+                                     pMessage)
+              onDelegate: pId
+              onSelector: pSelector
+             withTimeOut: pTimeout
+         jsonParserClass: [[MServer getServer] JSONParsers]
+          jsonParserFunc: @"LoginResponse"];
 }
 
-+ (id) SaveUserProfile:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector
-{
-    return [self SaveUserProfile:pMessage onDelegate:pId onSelector:pSelector withTimeout:DEFAULTWSTIMEOUT];
-}
+//+ (id) SaveUserProfile:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector
+//{
+//    return [self SaveUserProfile:pMessage onDelegate:pId onSelector:pSelector withTimeout:DEFAULTWSTIMEOUT];
+//}
 
-+ (id) SaveUserProfile:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeout:(NSTimeInterval)pTimeout
-{
-    NSLog(@"AVATAR:%@",[MServer getUser][USER_AVATAR]);
-    return [self Request:@"SaveUserProfile" withData:kSOAPBody(SaveUserProfile,
-                                                               kXMLSaveUserProfileBody(([MServer getUser][USER_EMAIL]),
-                                                                                       ([MServer getUser][USER_AVATAR])),
-                                                               pMessage) onDelegate:pId onSelector:pSelector withTimeOut:pTimeout];
-}
+//+ (id) SaveUserProfile:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeout:(NSTimeInterval)pTimeout
+//{
+//    NSLog(@"AVATAR:%@",[MServer getUser][USER_AVATAR]);
+//    return [self Request:@"SaveUserProfile" withData:kSOAPBody(SaveUserProfile,
+//                                                               kXMLSaveUserProfileBody(([MServer getUser][USER_EMAIL]),
+//                                                                                       ([MServer getUser][USER_AVATAR])),
+//                                                               pMessage) onDelegate:pId onSelector:pSelector withTimeOut:pTimeout];
+//}
 
 + (id) Register:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector
 {
@@ -192,19 +201,19 @@ NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
 
 + (id) Register:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeout:(NSTimeInterval)pTimeout
 {
-    return [self Request:@"/v1/auth/priv/register" withData:kSOAPBody(Register, kXMLRegisterBody(([MServer getUser][USER_EMAIL])), pMessage) onDelegate:pId onSelector:pSelector withTimeOut:pTimeout];
+    return [self Request:@"/v1/auth/priv/register" method:kPOST withData:kSOAPBody(Register, kXMLRegisterBody(([MServer getUser][USER_EMAIL])), pMessage) onDelegate:pId onSelector:pSelector withTimeOut:pTimeout jsonParserClass:[[MServer getServer] JSONParsers] jsonParserFunc:@"RegisterResponse"];
 }
 
 + (id) Request:(NSString *)pPath method:(NSString *)pMethod withData:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector
 {
-    return [self Request:pPath method:pMethod withData:pMessage onDelegate:pId onSelector:pSelector withTimeOut:DEFAULTWSTIMEOUT];
+    return [self Request:pPath method:pMethod withData:pMessage onDelegate:pId onSelector:pSelector withTimeOut:DEFAULTWSTIMEOUT jsonParserClass:nil jsonParserFunc:nil];
 }
 
-+ (id) Request:(NSString *)pPath method:(NSString *)pMethod withData:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeOut:(NSTimeInterval)pTimeout
++ (id) Request:(NSString *)pPath method:(NSString *)pMethod withData:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeOut:(NSTimeInterval)pTimeout jsonParserClass:(id)iJsonParserClass jsonParserFunc:(NSString *)pJsonParserFunc
 {
     NSURLRequest *request = [[mserver JSONRequestBuilder] createJSONRequest:pPath method:pMethod withData:pMessage withTimeout:pTimeout];
     NSLog(@"JSON body to be sent:%@",pMessage);
-    MWSWorker * worker = [[MWSWorker alloc] initMWSWorker:request onDelegate:pId onThread:[NSThread currentThread] onSelector:pSelector];
+    MWSWorker * worker = [[MWSWorker alloc] initMWSWorker:request onDelegate:pId onThread:[NSThread currentThread] onSelector:pSelector jsonParserClass:iJsonParserClass jsonParserFunc:pJsonParserFunc];
     return worker;
 }
 

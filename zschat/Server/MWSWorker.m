@@ -10,10 +10,10 @@
 #import "MWSWorker.h"
 #import "MServer.h"
 #import "MServerPrivate.h"
-#import "MXMLParsers.h"
+#import "MJSONParsers.h"
 
 //#import "ZSAppDelegate.h"
-#import "SMXMLDocument.h"
+//#import "SMXMLDocument.h"
 
 NSString * const kGETIPREQUEST =  @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">"
@@ -31,8 +31,10 @@ NSString * const kGETIPREQUEST =  @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n
 @implementation MWSWorker
 @synthesize delegate;
 @synthesize wsresult;
+@synthesize jsonParserClass;
+@synthesize jsonParserSelector;
 
-- (MWSWorker *) initMWSWorker:(NSURLRequest *)pRequest onDelegate:(id)pDelegate onThread:(NSThread *)pSenderThread onSelector:(SEL)pSenderSelector
+- (MWSWorker *) initMWSWorker:(NSURLRequest *)pRequest onDelegate:(id)pDelegate onThread:(NSThread *)pSenderThread onSelector:(SEL)pSenderSelector jsonParserClass:(id)iParserClass jsonParserFunc:(NSString *)pParserName
 {
 //    ZSAppDelegate * app = [ZSAppDelegate shared];webServiceQueue
     delegate = pDelegate;
@@ -55,14 +57,13 @@ NSString * const kGETIPREQUEST =  @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n
             else if (responseStatusCode != 200)
             {
                 NSLog(@"MSWorker 2");
-                [self setWsresult:[MServer MError:@"Server error" withCode:e_Error withString:@"Service not implemented"]];
+                [self setWsresult:[MServer MError:@"Server error" withCode:e_Error withString:stt]];
                 [senddelegate performSelector:pSenderSelector onThread:pSenderThread withObject: self waitUntilDone:YES];
             }
             else
             {
                 NSLog(@"MSWorker 3");
                 
-                SMXMLDocument *document = [SMXMLDocument documentWithData:responseData error:&error];
                 //        NSLog(@"Document:\n %@", document);
                 
                 if (error) {
@@ -72,31 +73,51 @@ NSString * const kGETIPREQUEST =  @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n
                     [senddelegate performSelector:pSenderSelector onThread:pSenderThread withObject:self waitUntilDone:YES];
                 }
                 else {
-                    NSLog(@"MSWorker 5");
-
-                    SMXMLElement *body = [[((SMXMLDocument *)document) root] childNamed:@"Body"] ;
-                    
-                    for (SMXMLElement * node in [body children]) {
-                        //            NSLog(@"%@",rootnode);
-                        SEL selector = NSSelectorFromString([[node name] stringByAppendingString:@":"]);
-                        if ([MXMLParsers respondsToSelector:selector])
+                    NSLog(@"MSWorker 50");
+                    NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
+                    if (iParserClass != nil)
+                    {
+                        SEL selector = NSSelectorFromString([pParserName stringByAppendingString:@":"]);
+                        if ([iParserClass respondsToSelector:selector])
                         {
-                            //                [[[ZSAppDelegate shared] XMLParsers]  performSelector:selector withObject:[rootnode children] afterDelay:0.0 ];
                             NSLog(@"MSWorker 6");
-
-                            IMP imp = [MXMLParsers methodForSelector:selector];
-                            id (*func)(id, SEL, NSArray *) = (void *)imp;
-                            [self setWsresult:func([[MServer getServer] JSONParsers], selector, [node children])];
-                            [senddelegate performSelector:pSenderSelector onThread:pSenderThread withObject:self waitUntilDone:YES];
-                        }
-                        else
-                        {
-                            NSLog(@"MSWorker 7");
-
-                            [self setWsresult:body];
-                            [senddelegate performSelector:pSenderSelector onThread:pSenderThread withObject:self waitUntilDone:YES];
+                            
+                            IMP imp = [iParserClass methodForSelector:selector];
+                            id (*func)(id, SEL, NSDictionary *) = (void *)imp;
+                            [self setWsresult:func(iParserClass, selector, jsonData)];
                         }
                     }
+                    else [self setWsresult:jsonData];
+                    [senddelegate performSelector:pSenderSelector onThread:pSenderThread withObject:self waitUntilDone:YES];
+//                    
+//                    for (key in jsonData)
+//                    {
+//                        //                        elem = [jsonData objectAtIndex:i];
+//                        NSLog(@"Key: %@, Value %@", key, [jsonData objectForKey: key]);
+//                    }
+//                    NSArray *body = document;
+//                    
+//                    for (SMXMLElement * node in [body children]) {
+//                        //            NSLog(@"%@",rootnode);
+//                        SEL selector = NSSelectorFromString([[node name] stringByAppendingString:@":"]);
+//                        if ([MJSONParsers respondsToSelector:selector])
+//                        {
+//                            //                [[[ZSAppDelegate shared] XMLParsers]  performSelector:selector withObject:[rootnode children] afterDelay:0.0 ];
+//                            NSLog(@"MSWorker 6");
+//
+//                            IMP imp = [MJSONParsers methodForSelector:selector];
+//                            id (*func)(id, SEL, NSArray *) = (void *)imp;
+//                            [self setWsresult:func([[MServer getServer] JSONParsers], selector, [node children])];
+//                            [senddelegate performSelector:pSenderSelector onThread:pSenderThread withObject:self waitUntilDone:YES];
+//                        }
+//                        else
+//                        {
+//                            NSLog(@"MSWorker 7");
+//
+//                            [self setWsresult:body];
+//                            [senddelegate performSelector:pSenderSelector onThread:pSenderThread withObject:self waitUntilDone:YES];
+//                        }
+                 //   }
                 }
             }
         }

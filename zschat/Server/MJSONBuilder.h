@@ -26,6 +26,7 @@ xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n\
 #define kXMLRegisterBody(EMail) [NSString stringWithFormat:@"<sEMail>%@</sEMail>",EMail]
 #define kXMLSaveUserProfileBody(EMail,Avatar) [NSString stringWithFormat:@"<sEMail>%@</sEMail><sAvatar>%@</sAvatar>",EMail,Avatar]
 #define kXMLFetchMessagesBody(MessageSerialNr) [NSString stringWithFormat:@"<nMsgSerial>%@</nMsgSerial>",[MessageSerialNr stringValue]]
+#define kLoginBody(UserName, Password, AppMessage) ("%@", [NSString stringWithFormat:@"{\"user_token\":\"%@\", \"password\":\"%@\", \"app_msg\":\"%@\"}", UserName, Password, AppMessage])
 @interface MJSONBuilder : NSObject
 @end
 

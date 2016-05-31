@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E25B2D951A2B580600E153E4"
-               BuildableName = "zschat.app"
-               BlueprintName = "zschat"
-               ReferencedContainer = "container:zschat.xcodeproj">
+               BuildableName = "jchat.app"
+               BlueprintName = "jchat"
+               ReferencedContainer = "container:jchat.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E25B2DAE1A2B580600E153E4"
-               BuildableName = "zschatTests.xctest"
-               BlueprintName = "zschatTests"
-               ReferencedContainer = "container:zschat.xcodeproj">
+               BuildableName = "jchat.xctest"
+               BlueprintName = "jchatTests"
+               ReferencedContainer = "container:jchat.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E25B2DAE1A2B580600E153E4"
-               BuildableName = "zschatTests.xctest"
-               BlueprintName = "zschatTests"
-               ReferencedContainer = "container:zschat.xcodeproj">
+               BuildableName = "jchat.xctest"
+               BlueprintName = "jchatTests"
+               ReferencedContainer = "container:jchat.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E25B2D951A2B580600E153E4"
-            BuildableName = "zschat.app"
-            BlueprintName = "zschat"
-            ReferencedContainer = "container:zschat.xcodeproj">
+            BuildableName = "jchat.app"
+            BlueprintName = "jchat"
+            ReferencedContainer = "container:jchat.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E25B2D951A2B580600E153E4"
-            BuildableName = "zschat.app"
-            BlueprintName = "zschat"
-            ReferencedContainer = "container:zschat.xcodeproj">
+            BuildableName = "jchat.app"
+            BlueprintName = "jchat"
+            ReferencedContainer = "container:jchat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -99,9 +99,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E25B2D951A2B580600E153E4"
-            BuildableName = "zschat.app"
-            BlueprintName = "zschat"
-            ReferencedContainer = "container:zschat.xcodeproj">
+            BuildableName = "jchat.app"
+            BlueprintName = "jchat"
+            ReferencedContainer = "container:jchat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

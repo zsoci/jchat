@@ -11,8 +11,8 @@
 #import "ProgressHUD.h"
 #import "ZSMsgView.h"
 #import "LoginViewController.h"
-#import "SMXMLDocument.h"
-#import "MXMLParsers.h"
+//#import "SMXMLDocument.h"
+#import "MJSONParsers.h"
 #import "Common.h"
 #import "AppDelegate.h"
 
@@ -124,12 +124,12 @@
     {
 //        [ProgressHUD showSuccess:[NSString stringWithFormat:@"Welcome back %@!", [MServer getUser][USER_NICKNAME]]];
         debugOut(([NSString stringWithFormat:@"Got login response data:%@",anObject]));
-        NSArray * nodes = anObject;
-        for (SMXMLElement * node in nodes)
-        {
-            if ([@"sNickName" ISNODENAME]) [MServer getUser][USER_NICKNAME] = [node value];
-            else NSLog(NODE_NOT_PROCESSED,[node name]);
-        }
+//        NSArray * nodes = anObject;
+//        for (SMXMLElement * node in nodes)
+//        {
+//            if ([@"sNickName" ISNODENAME]) [MServer getUser][USER_NICKNAME] = [node value];
+//            else NSLog(NODE_NOT_PROCESSED,[node name]);
+//        }
         [ProgressHUD showSuccess:[NSString stringWithFormat:@"Welcome back %@!", [MServer getUser][USER_NICKNAME]]];
         [MServer saveUserdefaults];
         [self dismissViewControllerAnimated:YES completion:Nil];

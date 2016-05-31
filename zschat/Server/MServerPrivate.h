@@ -18,7 +18,7 @@
 
 #define	kUSER_USERKEY				@"userobject"
 #define kCONTENTTYPEHEADERFIELD     @"Content-Type"
-#define kCONTENTTYPE                @"text/xml charset=utf-8"
+#define kCONTENTTYPE                @"application/json"
 #define kCACHECONTROLHEADERFIELD    @"Cache-Control"
 #define kCACHECONTROL               @"no-cache"
 #define kAUTHORISATIONHEADERFIELD   @"Authorization"

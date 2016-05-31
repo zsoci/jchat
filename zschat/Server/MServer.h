@@ -46,15 +46,15 @@
 + (void) setup:(NSString *)pHost withPort:(NSInteger) pPort withApp:(NSString *)application;
 + (void) setupUser:(NSString *)userName password:(NSString *)password;
 + (void) setupUserMail:(NSString*)userMail;
-+ (id) GetMessages:(NSString *)pMessage messageNr:(NSNumber *)messageNr onDelegate:(id)pId onSelector:(SEL)pSelector;
+//+ (id) GetMessages:(NSString *)pMessage messageNr:(NSNumber *)messageNr onDelegate:(id)pId onSelector:(SEL)pSelector;
 + (id) Login:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector;
 + (id) Login:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeout:(NSTimeInterval)pTimeout;
-+ (id) SaveUserProfile:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector;
-+ (id) SaveUserProfile:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeout:(NSTimeInterval)pTimeout;
+//+ (id) SaveUserProfile:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector;
+//+ (id) SaveUserProfile:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeout:(NSTimeInterval)pTimeout;
 + (id) Register:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector;
 + (id) Register:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeout:(NSTimeInterval)pTimeout;
-+ (id) Request:(NSString *)pSoapFunction withData:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector;
-+ (id) Request:(NSString *)pSoapFunction withData:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeOut:(NSTimeInterval)pTimeout;
++ (id) Request:(NSString *)pPath method:(NSString *)pMethod withData:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector;
++ (id) Request:(NSString *)pPath method:(NSString *)pMethod withData:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeOut:(NSTimeInterval)pTimeout jsonParserClass:(id)iJsonParserClass jsonParserFunc:(NSString *)pJsonParserFunc;
 //+ (idMWSWorker *) launchHTTPRequest:(NSString *)pRequest withData:(NSString *)pData onDelegate:(id)pId onSelector:(SEL)pSelector withTimeout:(NSTimeInterval)pTimeout;
 @property (strong,nonatomic) NSMutableDictionary * user;
 @end

@@ -12,9 +12,9 @@
 #define DEVELOPMENT
 #ifdef DEVELOPMENT
 //#define DEFAULTHOST     @"192.168.0.108"
-#define DEFAULTHOST     @"10.154.0.56"
+#define DEFAULTHOST     @"127.0.0.1"
 //#define DEFAULTHOST     @"zsoci.no-ip.biz"
-#define DEFAULTPORT     12001
+#define DEFAULTPORT     8082
 #else
 #define DEFAULTHOST     @"game.bridgeisland.com"
 #define DEFAULTPORT     80

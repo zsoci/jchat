@@ -67,11 +67,11 @@ NSString * const kXMLGetLobbbyLine = @"<sLobby lastserial=\"%@\">%@</sLobby>\n";
 //            kXMLSoapFooter];
 //}
 //
-+ (NSString *) login:(NSString *)pMessage
-{
-    return kJSONBody(Login, @"", pMessage);
+//+ (NSString *) login:(NSString *)pMessage
+//{
+//    return kJSONBody(Login, @"", pMessage);
     //    return [NSString stringWithFormat:kXMLFORMAT, kXMLSoapHeader,kXMLLogin,kFORMATTEDSOAPFOOTER];
-}
+//}
 
 //+ (NSString *) getUserProfile:(NSString *)pUserName
 //{

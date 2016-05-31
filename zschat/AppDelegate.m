@@ -10,8 +10,8 @@
 #import "Common.h"
 #import "MServer.h"
 #import "ProgressHUD.h"
-#import "MXMLParsers.h"
-#import "SMXMLDocument.h"
+//#import "MXMLParsers.h"
+//#import "SMXMLDocument.h"
 
 @interface AppDelegate ()
 {
@@ -69,7 +69,7 @@
 //        //        [MServer getUser][USER_NICKNAME] = nickname;
     if (!getIsActive)
     {
-        [MServer GetMessages:pMessage messageNr:messageNr onDelegate:self onSelector:@selector(messagesReceived:)];
+//        [MServer GetMessages:pMessage messageNr:messageNr onDelegate:self onSelector:@selector(messagesReceived:)];
         debugOut(@"Get thrown\n");
         getIsActive = YES;
     }
@@ -115,24 +115,24 @@
         //        [ProgressHUD showSuccess:[NSString stringWithFormat:@"Welcome back %@!", [MServer getUser][USER_NICKNAME]]];
         NSLog(@"Got message response data:%@",anObject);
         debugOut(([NSString stringWithFormat:@"Got message:%@\n",anObject]));
-        NSArray * nodes = anObject;
-        for (SMXMLElement * node in nodes)
-        {
-            if ([@"Message" ISNODENAME]) {
-                NSInteger msgNr = GET_NAMED_INTEGER_ATTRIBUTE(@"msgnr");
-                NSArray * messageBody = [node children];
-                for (SMXMLElement * child in messageBody)
-                {
-                    if ([@"bUpdateUserProfile" IS_NAMED_NODE(child)] && [@"true" isEqualToString:[child value]])
-                    {
-                        NSLog(@"Updating user profile by logging in again");
-                        [MServer Login:@"" onDelegate:self onSelector:@selector(getLoginResponse:)];
-                    }
-                    else NSLog(NODE_NOT_PROCESSED,[child name]);
-                }
-            }
-            else NSLog(NODE_NOT_PROCESSED,[node name]);
-        }
+//        NSArray * nodes = anObject;
+//        for (SMXMLElement * node in nodes)
+//        {
+//            if ([@"Message" ISNODENAME]) {
+//                NSInteger msgNr = GET_NAMED_INTEGER_ATTRIBUTE(@"msgnr");
+//                NSArray * messageBody = [node children];
+//                for (SMXMLElement * child in messageBody)
+//                {
+//                    if ([@"bUpdateUserProfile" IS_NAMED_NODE(child)] && [@"true" isEqualToString:[child value]])
+//                    {
+//                        NSLog(@"Updating user profile by logging in again");
+//                        [MServer Login:@"" onDelegate:self onSelector:@selector(getLoginResponse:)];
+//                    }
+//                    else NSLog(NODE_NOT_PROCESSED,[child name]);
+//                }
+//            }
+//            else NSLog(NODE_NOT_PROCESSED,[node name]);
+//        }
 
 //        NSArray * nodes = anObject;
 //        for (SMXMLElement * node in nodes)

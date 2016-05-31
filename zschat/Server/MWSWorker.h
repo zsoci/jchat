@@ -12,6 +12,8 @@
 
 @property (atomic,strong) id delegate;
 @property (nonatomic,strong) id wsresult;
+@property (atomic, strong) id jsonParserClass;
+@property (atomic, strong) id jsonParserSelector;
 
-- (id) initMWSWorker:(NSURLRequest *)pRequest onDelegate:(id)pDelegate onThread:(NSThread *)pSenderThread onSelector:(SEL)pSenderSelector;
+- (id) initMWSWorker:(NSURLRequest *)pRequest onDelegate:(id)pDelegate onThread:(NSThread *)pSenderThread onSelector:(SEL)pSenderSelector jsonParserClass:(id)iParserClass jsonParserFunc:(NSString *)pParserName;
 @end

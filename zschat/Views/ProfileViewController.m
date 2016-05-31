@@ -13,7 +13,7 @@
 #import "MBase64.h"
 #import "ProgressHUD.h"
 #import "ZSMsgView.h"
-#import "SMXMLDocument.h"
+//#import "SMXMLDocument.h"
 #import "AppDelegate.h"
 
 @interface ProfileViewController ()
@@ -286,7 +286,7 @@
     [MServer saveUserdefaults];
     [ProgressHUD show:@"Saving Profile"];
 
-    [MServer SaveUserProfile:@"" onDelegate:self onSelector:@selector(gotSaveUserProfileResponse:)];
+//    [MServer SaveUserProfile:@"" onDelegate:self onSelector:@selector(gotSaveUserProfileResponse:)];
 //    [MServer SaveUserProfile:<#(NSString *)#> onDelegate:<#(id)#> onSelector:<#(SEL)#>]
 }
 - (IBAction)imagePressed:(id)sender {

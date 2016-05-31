@@ -12,12 +12,8 @@
 		E24D40701A2B88D70046A39A /* AppLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24D406F1A2B88D70046A39A /* AppLoginViewController.m */; };
 		E24E006A1A31B0FF00FDE37C /* MServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E24E00691A31B0FF00FDE37C /* MServer.m */; };
 		E24E006D1A31BA0200FDE37C /* MBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = E24E006C1A31BA0200FDE37C /* MBase64.m */; };
-		E24E00701A31BB1400FDE37C /* MHTTPRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E24E006F1A31BB1400FDE37C /* MHTTPRequestBuilder.m */; };
 		E24E00761A31C10100FDE37C /* MWSWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = E24E00751A31C10100FDE37C /* MWSWorker.m */; };
-		E24E00791A31F25500FDE37C /* MSoapXMLBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E24E00781A31F25500FDE37C /* MSoapXMLBuilder.m */; };
-		E24E007D1A31FE0300FDE37C /* MXMLParsers.m in Sources */ = {isa = PBXBuildFile; fileRef = E24E007C1A31FE0300FDE37C /* MXMLParsers.m */; };
 		E24E00801A323F5600FDE37C /* ZSMsgView.m in Sources */ = {isa = PBXBuildFile; fileRef = E24E007F1A323F5600FDE37C /* ZSMsgView.m */; };
-		E24E00831A34852700FDE37C /* SMXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = E24E00821A34852700FDE37C /* SMXMLDocument.m */; };
 		E24E00851A3488BF00FDE37C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24E00841A3488BF00FDE37C /* Foundation.framework */; };
 		E24E00871A34894B00FDE37C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24E00861A34894B00FDE37C /* UIKit.framework */; };
 		E24E008D1A34928900FDE37C /* MMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E24E008C1A34928900FDE37C /* MMessage.m */; };
@@ -41,6 +37,9 @@
 		E25B2DD51A2B7F5D00E153E4 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E25B2DD41A2B7F5D00E153E4 /* utilities.m */; };
 		E25B2DD81A2B7F8C00E153E4 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E25B2DD71A2B7F8C00E153E4 /* NavigationController.m */; };
 		E291B6061A854D0100C82D4C /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E291B6051A854D0100C82D4C /* ProfileViewController.m */; };
+		E2EB99D71CFDBAC900B5A7DD /* MJSONRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EB99D61CFDBAC900B5A7DD /* MJSONRequestBuilder.m */; };
+		E2EB99DA1CFDBF5400B5A7DD /* MJSONBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EB99D91CFDBF5400B5A7DD /* MJSONBuilder.m */; };
+		E2EB99DD1CFDC1FC00B5A7DD /* MJSONParsers.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EB99DC1CFDC1FC00B5A7DD /* MJSONParsers.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,19 +62,11 @@
 		E24E00691A31B0FF00FDE37C /* MServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MServer.m; sourceTree = "<group>"; };
 		E24E006B1A31BA0200FDE37C /* MBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBase64.h; sourceTree = "<group>"; };
 		E24E006C1A31BA0200FDE37C /* MBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBase64.m; sourceTree = "<group>"; };
-		E24E006E1A31BB1400FDE37C /* MHTTPRequestBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHTTPRequestBuilder.h; sourceTree = "<group>"; };
-		E24E006F1A31BB1400FDE37C /* MHTTPRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHTTPRequestBuilder.m; sourceTree = "<group>"; };
 		E24E00741A31C10100FDE37C /* MWSWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWSWorker.h; sourceTree = "<group>"; };
 		E24E00751A31C10100FDE37C /* MWSWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWSWorker.m; sourceTree = "<group>"; };
-		E24E00771A31F25500FDE37C /* MSoapXMLBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSoapXMLBuilder.h; sourceTree = "<group>"; };
-		E24E00781A31F25500FDE37C /* MSoapXMLBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSoapXMLBuilder.m; sourceTree = "<group>"; };
 		E24E007A1A31F4FD00FDE37C /* MServerPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MServerPrivate.h; sourceTree = "<group>"; };
-		E24E007B1A31FE0300FDE37C /* MXMLParsers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXMLParsers.h; sourceTree = "<group>"; };
-		E24E007C1A31FE0300FDE37C /* MXMLParsers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXMLParsers.m; sourceTree = "<group>"; };
 		E24E007E1A323F5600FDE37C /* ZSMsgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSMsgView.h; sourceTree = "<group>"; };
 		E24E007F1A323F5600FDE37C /* ZSMsgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSMsgView.m; sourceTree = "<group>"; };
-		E24E00811A34852700FDE37C /* SMXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMXMLDocument.h; sourceTree = "<group>"; };
-		E24E00821A34852700FDE37C /* SMXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMXMLDocument.m; sourceTree = "<group>"; };
 		E24E00841A3488BF00FDE37C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E24E00861A34894B00FDE37C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E24E008B1A34928900FDE37C /* MMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMessage.h; sourceTree = "<group>"; };
@@ -88,7 +79,7 @@
 		E25A5ABB1AF534F100518184 /* DebugViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugViewController.m; sourceTree = "<group>"; };
 		E25ACA731A373F0800C0D978 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		E25ACA741A373F0800C0D978 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		E25B2D961A2B580600E153E4 /* zschat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zschat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E25B2D961A2B580600E153E4 /* jchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E25B2D9A1A2B580600E153E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E25B2D9B1A2B580600E153E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E25B2D9D1A2B580600E153E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -98,7 +89,7 @@
 		E25B2DA41A2B580600E153E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E25B2DA61A2B580600E153E4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E25B2DA91A2B580600E153E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		E25B2DAF1A2B580600E153E4 /* zschatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zschatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E25B2DAF1A2B580600E153E4 /* jchat.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jchat.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E25B2DB41A2B580600E153E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E25B2DB51A2B580600E153E4 /* zschatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zschatTests.m; sourceTree = "<group>"; };
 		E25B2DC11A2B585400E153E4 /* tab_group@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_group@2x.png"; sourceTree = "<group>"; };
@@ -115,6 +106,12 @@
 		E25B2DD71A2B7F8C00E153E4 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		E291B6041A854D0100C82D4C /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		E291B6051A854D0100C82D4C /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		E2EB99D51CFDBA2000B5A7DD /* MJSONRequestBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJSONRequestBuilder.h; sourceTree = "<group>"; };
+		E2EB99D61CFDBAC900B5A7DD /* MJSONRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSONRequestBuilder.m; sourceTree = "<group>"; };
+		E2EB99D81CFDBF0000B5A7DD /* MJSONBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJSONBuilder.h; sourceTree = "<group>"; };
+		E2EB99D91CFDBF5400B5A7DD /* MJSONBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSONBuilder.m; sourceTree = "<group>"; };
+		E2EB99DB1CFDC1EA00B5A7DD /* MJSONParsers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJSONParsers.h; sourceTree = "<group>"; };
+		E2EB99DC1CFDC1FC00B5A7DD /* MJSONParsers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSONParsers.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,23 +163,21 @@
 		E24D40721A2BB9E50046A39A /* Server */ = {
 			isa = PBXGroup;
 			children = (
-				E24E00771A31F25500FDE37C /* MSoapXMLBuilder.h */,
-				E24E00781A31F25500FDE37C /* MSoapXMLBuilder.m */,
 				E24E008B1A34928900FDE37C /* MMessage.h */,
 				E24E008C1A34928900FDE37C /* MMessage.m */,
-				E24E00811A34852700FDE37C /* SMXMLDocument.h */,
-				E24E00821A34852700FDE37C /* SMXMLDocument.m */,
-				E24E007B1A31FE0300FDE37C /* MXMLParsers.h */,
-				E24E007C1A31FE0300FDE37C /* MXMLParsers.m */,
 				E24E00741A31C10100FDE37C /* MWSWorker.h */,
 				E24E00751A31C10100FDE37C /* MWSWorker.m */,
-				E24E006E1A31BB1400FDE37C /* MHTTPRequestBuilder.h */,
-				E24E006F1A31BB1400FDE37C /* MHTTPRequestBuilder.m */,
 				E24E006B1A31BA0200FDE37C /* MBase64.h */,
 				E24E006C1A31BA0200FDE37C /* MBase64.m */,
 				E24E00681A31B0FF00FDE37C /* MServer.h */,
 				E24E00691A31B0FF00FDE37C /* MServer.m */,
 				E24E007A1A31F4FD00FDE37C /* MServerPrivate.h */,
+				E2EB99D51CFDBA2000B5A7DD /* MJSONRequestBuilder.h */,
+				E2EB99D61CFDBAC900B5A7DD /* MJSONRequestBuilder.m */,
+				E2EB99D81CFDBF0000B5A7DD /* MJSONBuilder.h */,
+				E2EB99D91CFDBF5400B5A7DD /* MJSONBuilder.m */,
+				E2EB99DB1CFDC1EA00B5A7DD /* MJSONParsers.h */,
+				E2EB99DC1CFDC1FC00B5A7DD /* MJSONParsers.m */,
 			);
 			name = Server;
 			path = zschat/Server;
@@ -211,8 +206,8 @@
 				E24D40721A2BB9E50046A39A /* Server */,
 				E24D40711A2BB79E0046A39A /* Views */,
 				E25B2DBF1A2B581300E153E4 /* Resources */,
-				E25B2D981A2B580600E153E4 /* zschat */,
-				E25B2DB21A2B580600E153E4 /* zschatTests */,
+				E25B2D981A2B580600E153E4 /* jchat */,
+				E25B2DB21A2B580600E153E4 /* jchatTests */,
 				E25B2D971A2B580600E153E4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -220,13 +215,13 @@
 		E25B2D971A2B580600E153E4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E25B2D961A2B580600E153E4 /* zschat.app */,
-				E25B2DAF1A2B580600E153E4 /* zschatTests.xctest */,
+				E25B2D961A2B580600E153E4 /* jchat.app */,
+				E25B2DAF1A2B580600E153E4 /* jchat.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E25B2D981A2B580600E153E4 /* zschat */ = {
+		E25B2D981A2B580600E153E4 /* jchat */ = {
 			isa = PBXGroup;
 			children = (
 				E24E00931A34E99600FDE37C /* ProgressHUD */,
@@ -236,6 +231,7 @@
 				E25B2DA81A2B580600E153E4 /* LaunchScreen.xib */,
 				E25B2D991A2B580600E153E4 /* Supporting Files */,
 			);
+			name = jchat;
 			path = zschat;
 			sourceTree = "<group>";
 		};
@@ -255,12 +251,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E25B2DB21A2B580600E153E4 /* zschatTests */ = {
+		E25B2DB21A2B580600E153E4 /* jchatTests */ = {
 			isa = PBXGroup;
 			children = (
 				E25B2DB51A2B580600E153E4 /* zschatTests.m */,
 				E25B2DB31A2B580600E153E4 /* Supporting Files */,
 			);
+			name = jchatTests;
 			path = zschatTests;
 			sourceTree = "<group>";
 		};
@@ -298,9 +295,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E25B2D951A2B580600E153E4 /* zschat */ = {
+		E25B2D951A2B580600E153E4 /* jchat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E25B2DB91A2B580600E153E4 /* Build configuration list for PBXNativeTarget "zschat" */;
+			buildConfigurationList = E25B2DB91A2B580600E153E4 /* Build configuration list for PBXNativeTarget "jchat" */;
 			buildPhases = (
 				E25B2D921A2B580600E153E4 /* Sources */,
 				E25B2D931A2B580600E153E4 /* Frameworks */,
@@ -310,14 +307,14 @@
 			);
 			dependencies = (
 			);
-			name = zschat;
+			name = jchat;
 			productName = zschat;
-			productReference = E25B2D961A2B580600E153E4 /* zschat.app */;
+			productReference = E25B2D961A2B580600E153E4 /* jchat.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E25B2DAE1A2B580600E153E4 /* zschatTests */ = {
+		E25B2DAE1A2B580600E153E4 /* jchatTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E25B2DBC1A2B580600E153E4 /* Build configuration list for PBXNativeTarget "zschatTests" */;
+			buildConfigurationList = E25B2DBC1A2B580600E153E4 /* Build configuration list for PBXNativeTarget "jchatTests" */;
 			buildPhases = (
 				E25B2DAB1A2B580600E153E4 /* Sources */,
 				E25B2DAC1A2B580600E153E4 /* Frameworks */,
@@ -328,9 +325,9 @@
 			dependencies = (
 				E25B2DB11A2B580600E153E4 /* PBXTargetDependency */,
 			);
-			name = zschatTests;
+			name = jchatTests;
 			productName = zschatTests;
-			productReference = E25B2DAF1A2B580600E153E4 /* zschatTests.xctest */;
+			productReference = E25B2DAF1A2B580600E153E4 /* jchat.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -352,7 +349,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E25B2D911A2B580500E153E4 /* Build configuration list for PBXProject "zschat" */;
+			buildConfigurationList = E25B2D911A2B580500E153E4 /* Build configuration list for PBXProject "jchat" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -365,8 +362,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E25B2D951A2B580600E153E4 /* zschat */,
-				E25B2DAE1A2B580600E153E4 /* zschatTests */,
+				E25B2D951A2B580600E153E4 /* jchat */,
+				E25B2DAE1A2B580600E153E4 /* jchatTests */,
 			);
 		};
 /* End PBXProject section */
@@ -402,12 +399,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2EB99DD1CFDC1FC00B5A7DD /* MJSONParsers.m in Sources */,
 				E24E00981A34E99600FDE37C /* ProgressHUD.m in Sources */,
 				E24E006A1A31B0FF00FDE37C /* MServer.m in Sources */,
-				E24E00791A31F25500FDE37C /* MSoapXMLBuilder.m in Sources */,
 				E2381ECC1A8627030092FE63 /* camera.m in Sources */,
 				E25B2DD51A2B7F5D00E153E4 /* utilities.m in Sources */,
-				E24E00701A31BB1400FDE37C /* MHTTPRequestBuilder.m in Sources */,
+				E2EB99D71CFDBAC900B5A7DD /* MJSONRequestBuilder.m in Sources */,
 				E25A5ABC1AF534F100518184 /* DebugViewController.m in Sources */,
 				E25B2DCF1A2B5D1900E153E4 /* ChatRoomsViewController.m in Sources */,
 				E24E00801A323F5600FDE37C /* ZSMsgView.m in Sources */,
@@ -415,7 +412,7 @@
 				E25ACA751A373F0800C0D978 /* RegisterViewController.m in Sources */,
 				E24E00761A31C10100FDE37C /* MWSWorker.m in Sources */,
 				E25B2DA21A2B580600E153E4 /* ViewController.m in Sources */,
-				E24E00831A34852700FDE37C /* SMXMLDocument.m in Sources */,
+				E2EB99DA1CFDBF5400B5A7DD /* MJSONBuilder.m in Sources */,
 				E25B2D9F1A2B580600E153E4 /* AppDelegate.m in Sources */,
 				E24D40701A2B88D70046A39A /* AppLoginViewController.m in Sources */,
 				E291B6061A854D0100C82D4C /* ProfileViewController.m in Sources */,
@@ -423,7 +420,6 @@
 				E25B2DD21A2B6B4400E153E4 /* LoginViewController.m in Sources */,
 				E24E008D1A34928900FDE37C /* MMessage.m in Sources */,
 				E25B2DD81A2B7F8C00E153E4 /* NavigationController.m in Sources */,
-				E24E007D1A31FE0300FDE37C /* MXMLParsers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,7 +436,7 @@
 /* Begin PBXTargetDependency section */
 		E25B2DB11A2B580600E153E4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E25B2D951A2B580600E153E4 /* zschat */;
+			target = E25B2D951A2B580600E153E4 /* jchat */;
 			targetProxy = E25B2DB01A2B580600E153E4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -501,7 +497,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -538,7 +534,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -559,7 +555,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lamardan.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = jchat;
 				PROVISIONING_PROFILE = "9a3f5d22-cdd5-4589-8e18-71fda8a02c92";
 			};
 			name = Debug;
@@ -576,7 +572,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lamardan.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = jchat;
 				PROVISIONING_PROFILE = "9a3f5d22-cdd5-4589-8e18-71fda8a02c92";
 			};
 			name = Release;
@@ -596,8 +592,8 @@
 				INFOPLIST_FILE = zschatTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lamardan.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/zschat.app/zschat";
+				PRODUCT_NAME = jchat;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/jchat.app/jchat";
 			};
 			name = Debug;
 		};
@@ -612,15 +608,15 @@
 				INFOPLIST_FILE = zschatTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lamardan.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/zschat.app/zschat";
+				PRODUCT_NAME = jchat;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/jchat.app/jchat";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E25B2D911A2B580500E153E4 /* Build configuration list for PBXProject "zschat" */ = {
+		E25B2D911A2B580500E153E4 /* Build configuration list for PBXProject "jchat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E25B2DB71A2B580600E153E4 /* Debug */,
@@ -629,7 +625,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E25B2DB91A2B580600E153E4 /* Build configuration list for PBXNativeTarget "zschat" */ = {
+		E25B2DB91A2B580600E153E4 /* Build configuration list for PBXNativeTarget "jchat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E25B2DBA1A2B580600E153E4 /* Debug */,
@@ -638,7 +634,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E25B2DBC1A2B580600E153E4 /* Build configuration list for PBXNativeTarget "zschatTests" */ = {
+		E25B2DBC1A2B580600E153E4 /* Build configuration list for PBXNativeTarget "jchatTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E25B2DBD1A2B580600E153E4 /* Debug */,
