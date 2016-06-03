@@ -11,6 +11,11 @@
 
 #import <Foundation/Foundation.h>
 
+#define kLoginBody(UserName, Password, AppMessage) ("%@", [NSString stringWithFormat:@"{\"user_token\":\"%@\", \"password\":\"%@\", \"app_msg\":\"%@\"}", UserName, Password, AppMessage])
+#define kRegisterBody(UserName, Password, Email, AppMessage) ("%@", [NSString stringWithFormat:@"{\"user_token\":\"%@\", \"password\":\"%@\", \"email\":\"%@\", \"app_msg\":%@}", UserName, Password, Email, AppMessage])
+#define kCommandBody(Command, AppMessage) ("%@", [NSString stringWithFormat:@"{\"command\":\"%@\", \"password\":\"%@\", \"email\":\"%@\", \"app_msg\":\"%@\"}", UserName, Password, Email, AppMessage])
+#define kSaveUserProfileBody(AppMessage) ("%@", [NSString stringWithFormat:@"{\"command\":\"save_user_profile\", \"app_msg\":%@}", AppMessage])
+
 #define kPOST @"POST"
 #define kGET @"GET"
 #define kPUT @"PUT"

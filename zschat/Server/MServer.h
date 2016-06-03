@@ -40,7 +40,6 @@
 + (MServer *)getServer;
 + (NSMutableDictionary *)getUser;
 + (NSMutableDictionary *)getAppUserData;
-//+ (void) waitForOperationsToFinish;
 + (void) saveUserdefaults;
 + (id) getWSResult:(id)anObject;
 + (void) setup:(NSString *)pHost withPort:(NSInteger) pPort withApp:(NSString *)application;
@@ -56,6 +55,5 @@
 + (id) Request:(NSString *)pPath method:(NSString *)pMethod withData:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeOut:(NSTimeInterval)pTimeout jsonParserClass:(id)iJsonParserClass jsonParserFunc:(NSString *)pJsonParserFunc;
 + (id) GetMessages:(id)pId onSelector:(SEL)pSelector;
 + (id) GetMessages:(NSNumber *)messageNr onDelegate:(id)pId onSelector:(SEL)pSelector;
-//+ (idMWSWorker *) launchHTTPRequest:(NSString *)pRequest withData:(NSString *)pData onDelegate:(id)pId onSelector:(SEL)pSelector withTimeout:(NSTimeInterval)pTimeout;
 @property (strong,nonatomic) NSMutableDictionary * user;
 @end

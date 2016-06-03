@@ -38,7 +38,6 @@
 		E25B2DD81A2B7F8C00E153E4 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E25B2DD71A2B7F8C00E153E4 /* NavigationController.m */; };
 		E291B6061A854D0100C82D4C /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E291B6051A854D0100C82D4C /* ProfileViewController.m */; };
 		E2EB99D71CFDBAC900B5A7DD /* MJSONRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EB99D61CFDBAC900B5A7DD /* MJSONRequestBuilder.m */; };
-		E2EB99DA1CFDBF5400B5A7DD /* MJSONBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EB99D91CFDBF5400B5A7DD /* MJSONBuilder.m */; };
 		E2EB99DD1CFDC1FC00B5A7DD /* MJSONParsers.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EB99DC1CFDC1FC00B5A7DD /* MJSONParsers.m */; };
 		E2EB99E01D00324D00B5A7DD /* MDeviceUID.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EB99DF1D00324D00B5A7DD /* MDeviceUID.m */; };
 /* End PBXBuildFile section */
@@ -109,8 +108,6 @@
 		E291B6051A854D0100C82D4C /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		E2EB99D51CFDBA2000B5A7DD /* MJSONRequestBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJSONRequestBuilder.h; sourceTree = "<group>"; };
 		E2EB99D61CFDBAC900B5A7DD /* MJSONRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSONRequestBuilder.m; sourceTree = "<group>"; };
-		E2EB99D81CFDBF0000B5A7DD /* MJSONBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJSONBuilder.h; sourceTree = "<group>"; };
-		E2EB99D91CFDBF5400B5A7DD /* MJSONBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSONBuilder.m; sourceTree = "<group>"; };
 		E2EB99DB1CFDC1EA00B5A7DD /* MJSONParsers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJSONParsers.h; sourceTree = "<group>"; };
 		E2EB99DC1CFDC1FC00B5A7DD /* MJSONParsers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSONParsers.m; sourceTree = "<group>"; };
 		E2EB99DE1D00324D00B5A7DD /* MDeviceUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDeviceUID.h; sourceTree = "<group>"; };
@@ -179,8 +176,6 @@
 				E24E007A1A31F4FD00FDE37C /* MServerPrivate.h */,
 				E2EB99D51CFDBA2000B5A7DD /* MJSONRequestBuilder.h */,
 				E2EB99D61CFDBAC900B5A7DD /* MJSONRequestBuilder.m */,
-				E2EB99D81CFDBF0000B5A7DD /* MJSONBuilder.h */,
-				E2EB99D91CFDBF5400B5A7DD /* MJSONBuilder.m */,
 				E2EB99DB1CFDC1EA00B5A7DD /* MJSONParsers.h */,
 				E2EB99DC1CFDC1FC00B5A7DD /* MJSONParsers.m */,
 			);
@@ -419,7 +414,6 @@
 				E25ACA751A373F0800C0D978 /* RegisterViewController.m in Sources */,
 				E24E00761A31C10100FDE37C /* MWSWorker.m in Sources */,
 				E25B2DA21A2B580600E153E4 /* ViewController.m in Sources */,
-				E2EB99DA1CFDBF5400B5A7DD /* MJSONBuilder.m in Sources */,
 				E25B2D9F1A2B580600E153E4 /* AppDelegate.m in Sources */,
 				E24D40701A2B88D70046A39A /* AppLoginViewController.m in Sources */,
 				E291B6061A854D0100C82D4C /* ProfileViewController.m in Sources */,

@@ -9,7 +9,6 @@
 #import "MServer.h"
 #import "MServerPrivate.h"
 #import "MJSONRequestBuilder.h"
-#import "MJSONBuilder.h"
 #import "MJSONParsers.h"
 #import "MWSWorker.h"
 
@@ -30,17 +29,6 @@ static MServer * mserver = nil;
 @synthesize JSONParsers;
 
 NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
-
-//MSSoapXMLBuilder * soapXMLBuilder;
-//+(NSOperationQueue *) webServiceQueue
-//{
-//    return webServiceQueue;
-//}
-
-//+ (void) waitForOperationsToFinish
-//{
-//    [[[MServer getServer] webServiceQueue] waitUntilAllOperationsAreFinished];
-//}
 
 +(NSMutableDictionary *)getUser
 {
@@ -96,13 +84,7 @@ NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
     }
     else
     {
-//        UserData * data = anObject;
-//        [[[[ZSAppDelegate shared] appGlobals] userData] setAvatar:[data avatar]];
-//        [[[[ZSAppDelegate shared] appGlobals] userData] setExpireTime:[data expireTime]];
-//        [(ZSRootViewController *)self.parentViewController swapViewController:self toController:@"MainMenuView" duration:VIEWTRANSITIONDURATION options:UIViewAnimationOptionLayoutSubviews | UIViewAnimationOptionTransitionFlipFromLeft completion:nil];
-//        [[[[ZSAppDelegate shared] appGlobals] rootWindow] runGet];
     }
-    
 }
 
 + (id) GetMessages:(id)pId onSelector:(SEL)pSelector;
@@ -154,12 +136,10 @@ NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
     if (![super init]) return nil;
     mserver = self;
     mserver.webServiceQueue = [[NSOperationQueue alloc] init];
-//    [mserver setWebServiceQueue:[[NSOperationQueue alloc] init]];
     [webServiceQueue setMaxConcurrentOperationCount:2];
     [MBase64 initialize];
     [mserver setJSONRequestBuilder:[[MJSONRequestBuilder alloc] init]];
     [[mserver JSONRequestBuilder] setModuleName:kMODULENAME];
-//    [[mserver JSONRequestBuilder] setConnetionToHost:DEFAULTHOST withPort:DEFAULTPORT];
     [mserver setJSONParsers:[[MJSONParsers alloc] init]];
 	return mserver;
 }
@@ -210,7 +190,6 @@ NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
 
 + (id) Register:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeout:(NSTimeInterval)pTimeout
 {
-//    return [self Request:@"/v1/auth/priv/register" method:kPOST withData:kSOAPBody(Register, kXMLRegisterBody(([MServer getUser][USER_EMAIL])), pMessage) onDelegate:pId onSelector:pSelector withTimeOut:pTimeout jsonParserClass:[[MServer getServer] JSONParsers] jsonParserFunc:@"RegisterResponse"];
     return [self Request: @"/v1/auth/priv/register"
                   method: kPOST
                 withData: kRegisterBody(([MServer getUser][USER_USERNAME]),
@@ -231,7 +210,6 @@ NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
 + (id) Request:(NSString *)pPath method:(NSString *)pMethod withData:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeOut:(NSTimeInterval)pTimeout jsonParserClass:(id)iJsonParserClass jsonParserFunc:(NSString *)pJsonParserFunc
 {
     NSURLRequest *request = [[mserver JSONRequestBuilder] createJSONRequest:pPath method:pMethod withData:pMessage withTimeout:pTimeout];
-    NSLog(@"JSON body to be sent:%@",pMessage);
     MWSWorker * worker = [[MWSWorker alloc] initMWSWorker:request onDelegate:pId onThread:[NSThread currentThread] onSelector:pSelector jsonParserFunc:pJsonParserFunc];
     return worker;
 }
@@ -251,6 +229,4 @@ NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
     [userInfo setObject:errormsg forKey:NSLocalizedDescriptionKey];
     return [NSError errorWithDomain:MServerErrorDomain code:code userInfo:userInfo];
 }
-
-
 @end

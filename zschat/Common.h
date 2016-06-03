@@ -12,7 +12,8 @@
 #define DEVELOPMENT
 #ifdef DEVELOPMENT
 //#define DEFAULTHOST     @"192.168.0.108"
-#define DEFAULTHOST     @"10.154.1.59"
+//#define DEFAULTHOST     @"10.154.1.59"
+#define DEFAULTHOST     @"10.154.0.59"
 //#define DEFAULTHOST     @"192.168.0.121"
 //#define DEFAULTHOST     @"zsoci.no-ip.biz"
 #define DEFAULTPORT     8082
