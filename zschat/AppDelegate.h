@@ -19,6 +19,7 @@
 @property (strong, nonatomic) DebugViewController * debugView;
 
 - (void)getMessages:(NSString *)pMessage;
+- (void) getLoginResponse:(id)aObject;
 
 @end
 

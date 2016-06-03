@@ -245,6 +245,7 @@
     id anObject = [MServer getWSResult:aObject];
     if ([anObject isKindOfClass:[NSError class]])
     { // GetLogin did not succeeded
+        NSLog(@"gotSaveUserProfileResponse ERROR:%@", anObject);
         [ProgressHUD dismiss];
         
         ZSMsgView *alert = [[ZSMsgView alloc] initWithTitle:[[(NSError *)anObject userInfo] valueForKey:NSLocalizedDescriptionKey]
@@ -257,7 +258,7 @@
     }
     else
     {
-        NSLog(@"Got registerresponse:%@",anObject);
+        NSLog(@"Got savedprofileresponse:%@",anObject);
 //        NSArray * nodes = anObject;
 //        for (SMXMLElement * node in nodes)
 //        {
@@ -286,8 +287,9 @@
     [MServer saveUserdefaults];
     [ProgressHUD show:@"Saving Profile"];
 
-//    [MServer SaveUserProfile:@"" onDelegate:self onSelector:@selector(gotSaveUserProfileResponse:)];
-//    [MServer SaveUserProfile:<#(NSString *)#> onDelegate:<#(id)#> onSelector:<#(SEL)#>]
+    NSString * profile = [NSString stringWithFormat:@"{\"avatar\":\"%@\"}", [MServer getUser][USER_AVATAR]];
+//    NSString * profile = [NSString stringWithFormat:@"{\"avatar\":\"\"}"];
+    [MServer SaveUserProfile:profile onDelegate:self onSelector:@selector(gotSaveUserProfileResponse:)];
 }
 - (IBAction)imagePressed:(id)sender {
     NSLog(@"Avatar pressed");

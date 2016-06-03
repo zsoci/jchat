@@ -23,10 +23,11 @@ xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n\
 #define kXMLAppMessage @"<sAppMessage>\n\t\t\t\t%@\n\t\t\t</sAppMessage>"
 #define kSOAPBody(Function,Content,AppMessage) ("%@",[NSString stringWithFormat:kXMLFORMAT(Function),Content,[NSString stringWithUTF8String:[AppMessage UTF8String]]])
 
-#define kXMLRegisterBody(EMail) [NSString stringWithFormat:@"<sEMail>%@</sEMail>",EMail]
 #define kXMLSaveUserProfileBody(EMail,Avatar) [NSString stringWithFormat:@"<sEMail>%@</sEMail><sAvatar>%@</sAvatar>",EMail,Avatar]
-#define kXMLFetchMessagesBody(MessageSerialNr) [NSString stringWithFormat:@"<nMsgSerial>%@</nMsgSerial>",[MessageSerialNr stringValue]]
 #define kLoginBody(UserName, Password, AppMessage) ("%@", [NSString stringWithFormat:@"{\"user_token\":\"%@\", \"password\":\"%@\", \"app_msg\":\"%@\"}", UserName, Password, AppMessage])
+#define kRegisterBody(UserName, Password, Email, AppMessage) ("%@", [NSString stringWithFormat:@"{\"user_token\":\"%@\", \"password\":\"%@\", \"email\":\"%@\", \"app_msg\":%@}", UserName, Password, Email, AppMessage])
+#define kCommandBody(Command, AppMessage) ("%@", [NSString stringWithFormat:@"{\"command\":\"%@\", \"password\":\"%@\", \"email\":\"%@\", \"app_msg\":\"%@\"}", UserName, Password, Email, AppMessage])
+#define kSaveUserProfileBody(AppMessage) ("%@", [NSString stringWithFormat:@"{\"command\":\"save_user_profile\", \"app_msg\":%@}", AppMessage])
 @interface MJSONBuilder : NSObject
 @end
 

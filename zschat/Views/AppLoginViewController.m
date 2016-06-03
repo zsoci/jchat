@@ -123,7 +123,7 @@
     else
     {
 //        [ProgressHUD showSuccess:[NSString stringWithFormat:@"Welcome back %@!", [MServer getUser][USER_NICKNAME]]];
-        debugOut(([NSString stringWithFormat:@"Got login response data:%@",anObject]));
+        debugOut(([NSString stringWithFormat:@"Got login response data in apploginviewcontroller.m:%@",anObject]));
 //        NSArray * nodes = anObject;
 //        for (SMXMLElement * node in nodes)
 //        {

@@ -40,6 +40,7 @@
 		E2EB99D71CFDBAC900B5A7DD /* MJSONRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EB99D61CFDBAC900B5A7DD /* MJSONRequestBuilder.m */; };
 		E2EB99DA1CFDBF5400B5A7DD /* MJSONBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EB99D91CFDBF5400B5A7DD /* MJSONBuilder.m */; };
 		E2EB99DD1CFDC1FC00B5A7DD /* MJSONParsers.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EB99DC1CFDC1FC00B5A7DD /* MJSONParsers.m */; };
+		E2EB99E01D00324D00B5A7DD /* MDeviceUID.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EB99DF1D00324D00B5A7DD /* MDeviceUID.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,8 @@
 		E2EB99D91CFDBF5400B5A7DD /* MJSONBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSONBuilder.m; sourceTree = "<group>"; };
 		E2EB99DB1CFDC1EA00B5A7DD /* MJSONParsers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJSONParsers.h; sourceTree = "<group>"; };
 		E2EB99DC1CFDC1FC00B5A7DD /* MJSONParsers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSONParsers.m; sourceTree = "<group>"; };
+		E2EB99DE1D00324D00B5A7DD /* MDeviceUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDeviceUID.h; sourceTree = "<group>"; };
+		E2EB99DF1D00324D00B5A7DD /* MDeviceUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDeviceUID.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +166,8 @@
 		E24D40721A2BB9E50046A39A /* Server */ = {
 			isa = PBXGroup;
 			children = (
+				E2EB99DE1D00324D00B5A7DD /* MDeviceUID.h */,
+				E2EB99DF1D00324D00B5A7DD /* MDeviceUID.m */,
 				E24E008B1A34928900FDE37C /* MMessage.h */,
 				E24E008C1A34928900FDE37C /* MMessage.m */,
 				E24E00741A31C10100FDE37C /* MWSWorker.h */,
@@ -345,6 +350,7 @@
 					};
 					E25B2DAE1A2B580600E153E4 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 2W2HD332LT;
 						TestTargetID = E25B2D951A2B580600E153E4;
 					};
 				};
@@ -399,6 +405,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2EB99E01D00324D00B5A7DD /* MDeviceUID.m in Sources */,
 				E2EB99DD1CFDC1FC00B5A7DD /* MJSONParsers.m in Sources */,
 				E24E00981A34E99600FDE37C /* ProgressHUD.m in Sources */,
 				E24E006A1A31B0FF00FDE37C /* MServer.m in Sources */,
@@ -556,7 +563,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lamardan.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = jchat;
-				PROVISIONING_PROFILE = "9a3f5d22-cdd5-4589-8e18-71fda8a02c92";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -573,7 +580,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lamardan.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = jchat;
-				PROVISIONING_PROFILE = "9a3f5d22-cdd5-4589-8e18-71fda8a02c92";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -581,6 +588,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -593,6 +602,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lamardan.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = jchat;
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/jchat.app/jchat";
 			};
 			name = Debug;
@@ -601,6 +611,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -609,6 +621,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lamardan.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = jchat;
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/jchat.app/jchat";
 			};
 			name = Release;

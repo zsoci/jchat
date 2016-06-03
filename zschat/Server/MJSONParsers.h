@@ -20,7 +20,7 @@
 #define GET_NAMED_INTEGER_ATTRIBUTE(Attribute)  [[node attributeNamed:Attribute] intValue]
 
 @interface MJSONParsers : NSObject
-+ (id) LoginResponse:(NSArray *)nodes;
++ (id) LoginResponse:(NSDictionary *)jsonData;
 @end
 
 #endif /* MJSONParsers_h */

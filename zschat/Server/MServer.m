@@ -105,11 +105,16 @@ NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
     
 }
 
-//+ (id) GetMessages:(NSString *)pMessage messageNr:(NSNumber *)messageNr onDelegate:(id)pId onSelector:(SEL)pSelector;
-//{
-//    return [self Request:@"FetchMessages" withData:kSOAPBody(FetchMessages,kXMLFetchMessagesBody(messageNr),pMessage) onDelegate:pId onSelector:pSelector withTimeOut:DEFAULTGETTIMEOUT];
-//}
-////return [self Request:@"Login" withData:kSOAPBody(Login, @"", pMessage) onDelegate:pId onSelector:pSelector withTimeOut:pTimeout];
++ (id) GetMessages:(id)pId onSelector:(SEL)pSelector;
+{
+    return [self GetMessages:[self getUser][USER_MSGSERIAL] onDelegate:pId onSelector:pSelector];
+}
+
++ (id) GetMessages:(NSNumber *)messageNr onDelegate:(id)pId onSelector:(SEL)pSelector;
+{
+    NSString * URL = [NSString stringWithFormat:@"/v1/message/get?serial=%@", messageNr];
+    return [self Request:URL method:kGET withData:@"" onDelegate:pId onSelector:pSelector withTimeOut:DEFAULTGETTIMEOUT jsonParserClass:[[MServer getServer] JSONParsers] jsonParserFunc:@"FetchMessageResponse"];
+}
 
 + (void) setup:(NSString *)pHost withPort:(NSInteger) pPort withApp:(NSString *)application
 {
@@ -178,19 +183,23 @@ NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
           jsonParserFunc: @"LoginResponse"];
 }
 
-//+ (id) SaveUserProfile:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector
-//{
-//    return [self SaveUserProfile:pMessage onDelegate:pId onSelector:pSelector withTimeout:DEFAULTWSTIMEOUT];
-//}
++ (id) SaveUserProfile:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector
+{
+    return [self SaveUserProfile:pMessage onDelegate:pId onSelector:pSelector withTimeout:DEFAULTWSTIMEOUT];
+}
 
-//+ (id) SaveUserProfile:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeout:(NSTimeInterval)pTimeout
-//{
-//    NSLog(@"AVATAR:%@",[MServer getUser][USER_AVATAR]);
-//    return [self Request:@"SaveUserProfile" withData:kSOAPBody(SaveUserProfile,
-//                                                               kXMLSaveUserProfileBody(([MServer getUser][USER_EMAIL]),
-//                                                                                       ([MServer getUser][USER_AVATAR])),
-//                                                               pMessage) onDelegate:pId onSelector:pSelector withTimeOut:pTimeout];
-//}
++ (id) SaveUserProfile:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeout:(NSTimeInterval)pTimeout
+{
+    NSLog(@"AVATAR:%@",[MServer getUser][USER_AVATAR]);
+    return [self Request:@"/v1/members/saveprofile"
+                  method:kPOST
+                withData:kSaveUserProfileBody(pMessage)
+              onDelegate:pId
+              onSelector:pSelector
+             withTimeOut:pTimeout
+            jsonParserClass:nil
+          jsonParserFunc:@""];
+}
 
 + (id) Register:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector
 {
@@ -201,8 +210,18 @@ NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
 
 + (id) Register:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector withTimeout:(NSTimeInterval)pTimeout
 {
-    return [self Request:@"/v1/auth/priv/register" method:kPOST withData:kSOAPBody(Register, kXMLRegisterBody(([MServer getUser][USER_EMAIL])), pMessage) onDelegate:pId onSelector:pSelector withTimeOut:pTimeout jsonParserClass:[[MServer getServer] JSONParsers] jsonParserFunc:@"RegisterResponse"];
-}
+//    return [self Request:@"/v1/auth/priv/register" method:kPOST withData:kSOAPBody(Register, kXMLRegisterBody(([MServer getUser][USER_EMAIL])), pMessage) onDelegate:pId onSelector:pSelector withTimeOut:pTimeout jsonParserClass:[[MServer getServer] JSONParsers] jsonParserFunc:@"RegisterResponse"];
+    return [self Request: @"/v1/auth/priv/register"
+                  method: kPOST
+                withData: kRegisterBody(([MServer getUser][USER_USERNAME]),
+                                        ([MServer getUser][USER_PASSWORD]),
+                                        ([MServer getUser][USER_EMAIL]),
+                                        pMessage)
+              onDelegate: pId
+              onSelector: pSelector
+             withTimeOut: pTimeout
+         jsonParserClass: [[MServer getServer] JSONParsers]
+          jsonParserFunc: @"RegisterResponse"];}
 
 + (id) Request:(NSString *)pPath method:(NSString *)pMethod withData:(NSString *)pMessage onDelegate:(id)pId onSelector:(SEL)pSelector
 {
@@ -213,7 +232,7 @@ NSString *const MServerErrorDomain = @"MultiServerErrorDomain";
 {
     NSURLRequest *request = [[mserver JSONRequestBuilder] createJSONRequest:pPath method:pMethod withData:pMessage withTimeout:pTimeout];
     NSLog(@"JSON body to be sent:%@",pMessage);
-    MWSWorker * worker = [[MWSWorker alloc] initMWSWorker:request onDelegate:pId onThread:[NSThread currentThread] onSelector:pSelector jsonParserClass:iJsonParserClass jsonParserFunc:pJsonParserFunc];
+    MWSWorker * worker = [[MWSWorker alloc] initMWSWorker:request onDelegate:pId onThread:[NSThread currentThread] onSelector:pSelector jsonParserFunc:pJsonParserFunc];
     return worker;
 }
 

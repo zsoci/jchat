@@ -35,14 +35,14 @@
 {
     id retVal = nil;
     NSString * key;
-    
+    NSLog(@"JSONDATA in LoginResponse:%@", jsonData);
     for (key in jsonData)
     {
         NSLog(@"Key: %@, Value %@", key, [jsonData objectForKey: key]);
     }
 
     retVal = [NSString stringWithFormat:@"Login failed"];
-    return retVal;
+    return [jsonData objectForKey:@"app_message"];
 }
 //+ (id) LoginResponse:(NSArray *)jsonData
 //{
@@ -86,6 +86,21 @@
 //    return retVal;
 //}
 //
+
+
++ (id) RegisterResponse:(NSDictionary *)jsonData
+{
+    id retVal = nil;
+    NSString * key;
+    NSLog(@"JSONDATA in RegisterUserResponse:%@", jsonData);
+    for (key in jsonData)
+    {
+        NSLog(@"Key: %@, Value %@", key, [jsonData objectForKey: key]);
+    }
+    
+    retVal = [NSString stringWithFormat:@"Login failed"];
+    return [jsonData objectForKey:@"app_message"];
+}
 //+ (id) RegisterUserResponse:(NSArray *)nodes;
 //{
 //    id retVal = nil;
@@ -128,33 +143,28 @@
 //    [defaults setObject:[MServer getUser] forKey:kUSER_USERKEY];
 //    return retVal;
 //}
-//+ (id) FetchMessagesResponse:(NSArray *)nodes;
-//{
++ (id) FetchMessageResponse:(NSDictionary *)jsonData;
+{
 //    id retVal = nil;
 //    //    UserData * pUserData = [[UserData alloc] init];
-//    NSArray * appMessage;
-//    NSString * responseResult;
+//    NSArray * appMessage = nil;
+//    NSString * responseResult = @"";
 //    NSString * sText = @"General error ";
-//    //
-//    for (SMXMLElement * node in nodes)
+//    NSString * key;
+//    NSLog(@"JSONDATA in FetchMessageResponse:%@", jsonData);
+//    for (key in jsonData)
 //    {
-//        if ([@"sCode" ISNODENAME]) responseResult = [node value];
-//        else if ([@"sAppResponse" ISNODENAME]) appMessage = [node children];
-//        else if ([@"sText" ISNODENAME]) sText = [node value];
-//        else NSLog(NODE_NOT_PROCESSED,[node name]);
+//        NSLog(@"Key: %@, Value %@", key, [jsonData objectForKey: key]);
 //    }
-//    if ([@"e_OK" isEqualToString:responseResult])
-//    {
-//        retVal = appMessage;
-//    }
+    return [jsonData objectForKey:@"Messages"];
 //    else
 //    {
 //        retVal = [MServer MError:@"Error" withCode:e_Error withString:sText];
 //    }
-//    //    NSUserDefaults* defaults=[NSUserDefaults standardUserDefaults];
-//    //    [defaults setObject:[MServer getUser] forKey:kUSER_USERKEY];
+    //    NSUserDefaults* defaults=[NSUserDefaults standardUserDefaults];
+    //    [defaults setObject:[MServer getUser] forKey:kUSER_USERKEY];
 //    return retVal;
-//}
+}
 
 //+ (void) fillUserProfileFromXMLNode:(NSXMLNode *)pNode toData:(UserData *)pUserData
 //{

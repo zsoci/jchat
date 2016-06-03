@@ -81,7 +81,7 @@
         [ProgressHUD show:@"Please wait..." Interaction:YES];
         [MServer setupUser:name password:password];
         [MServer setupUserMail:email];
-        [MServer Register:[NSString stringWithFormat:@"<sNickName>%@</sNickName>",[NSString stringWithUTF8String:[nick UTF8String]]] onDelegate:self onSelector:@selector(getRegisterResponse:)];
+        [MServer Register:[NSString stringWithFormat:@"{\"nick_name\":\"%@\"}",[NSString stringWithUTF8String:[nick UTF8String]]] onDelegate:self onSelector:@selector(getRegisterResponse:)];
     }
     else [ProgressHUD showError:@"Please fill all values!"];
 }
@@ -104,27 +104,14 @@
     else
     {
         NSLog(@"Got registerresponse:%@",anObject);
-//        NSArray * nodes = anObject;
-//        for (SMXMLElement * node in nodes)
-//        {
-//            if ([@"sNickName" ISNODENAME]) [MServer getUser][USER_NICKNAME] = [node value];
-//            else NSLog(NODE_NOT_PROCESSED,[node name]);
-//        }
-        [ProgressHUD showSuccess:[NSString stringWithFormat:@"Welcome %@!", [MServer getUser][USER_NICKNAME]]];
+        [MServer Login:@"" onDelegate:myAppDelegate onSelector:@selector(getLoginResponse:)];
         [MServer saveUserdefaults];
         [myAppDelegate getMessages:@""];
-
-        //UserData * data = anObject;
-        //        [[[[ZSAppDelegate shared] appGlobals] userData] setAvatar:[data avatar]];
-        //        [[[[ZSAppDelegate shared] appGlobals] userData] setExpireTime:[data expireTime]];
-        //        [(ZSRootViewController *)self.parentViewController swapViewController:self toController:@"MainMenuView" duration:VIEWTRANSITIONDURATION options:UIViewAnimationOptionLayoutSubviews | UIViewAnimationOptionTransitionFlipFromLeft completion:nil];
-        //        [[[[ZSAppDelegate shared] appGlobals] rootWindow] runGet];
     }
     
 }
 - (void) msgBoxLoginResponse:(NSNumber*) index
 {
-    
 //    if (1 == [index integerValue]) {
         // vegyuk ki a rootviewcontrolleret
 //        NSMutableArray *viewController = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];

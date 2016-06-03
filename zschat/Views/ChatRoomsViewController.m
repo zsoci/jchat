@@ -29,7 +29,8 @@
     [ProgressHUD show:@"Connecting"];
     [MServer setup:DEFAULTHOST withPort:DEFAULTPORT withApp:APPLICATIONID];
     
-    [MServer Login:@"" onDelegate:self onSelector:@selector(getLoginResponse:)];
+    [MServer Login:@"" onDelegate:myAppDelegate onSelector:@selector(getLoginResponse:)];
+//    [MServer Login:@"" onDelegate:self onSelector:@selector(getLoginResponse:)];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -51,40 +52,43 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) getLoginResponse:(id)aObject
-{
-    id anObject = [MServer getWSResult:aObject];
-    if ([anObject isKindOfClass:[NSError class]])
-    { // GetLogin did not succeeded
-        [ProgressHUD dismiss];
-        LoginUser(self);
-    }
-    else
-    {
-        NSLog(@"Got login response data:%@",anObject);
-//        NSArray * nodes = anObject;
-//        for (SMXMLElement * node in nodes)
-//        {
-//            if ([@"sNickName" ISNODENAME]) [MServer getUser][USER_NICKNAME] = [node value];
-//            else NSLog(NODE_NOT_PROCESSED,[node name]);
-//        }
-        [ProgressHUD showSuccess:[NSString stringWithFormat:@"Welcome back %@!", [MServer getUser][USER_NICKNAME]]];
-        [MServer saveUserdefaults];
-        [myAppDelegate getMessages:@""];
-    }
-}
+//- (void) getLoginResponse:(id)aObject
+//{
+//    id anObject = [MServer getWSResult:aObject];
+//    if ([anObject isKindOfClass:[NSError class]])
+//    { // GetLogin did not succeeded
+//        [ProgressHUD dismiss];
+//        LoginUser(self);
+//    }
+//    else
+//    {
+//        NSLog(@"Got login response data in chatroomsviewcontroller.m:%@",anObject);
+////        NSArray * nodes = anObject;
+////        for (SMXMLElement * node in nodes)
+////        {
+////            if ([@"sNickName" ISNODENAME]) [MServer getUser][USER_NICKNAME] = [node value];
+////            else NSLog(NODE_NOT_PROCESSED,[node name]);
+////        }
+////        NSDictionary * dict = anObject;
+//        [MServer getUser][USER_NICKNAME] = [(NSDictionary *) anObject objectForKey:@"nick_name"];
+//        //[MServer getUser][USER_NICKNAME] = [dict objectForKey:@"nick_name"];
+//        [ProgressHUD showSuccess:[NSString stringWithFormat:@"Welcome back %@!", [MServer getUser][USER_NICKNAME]]];
+//        [MServer saveUserdefaults];
+//        [myAppDelegate getMessages:@""];
+//    }
+//}
 
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
+//#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
+//#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return 0;
 }

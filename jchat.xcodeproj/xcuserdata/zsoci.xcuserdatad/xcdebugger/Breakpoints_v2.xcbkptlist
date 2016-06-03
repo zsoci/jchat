@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zschat/Server/MServer.m"
-            timestampString = "486398710.581381"
+            timestampString = "486475937.916278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "+setupUser:password:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zschat/Server/MServer.m"
-            timestampString = "486398710.581381"
+            timestampString = "486475937.916278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "+setup:withPort:withApp:"
             landmarkType = "5">
          </BreakpointContent>
@@ -168,11 +168,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zschat/Views/RegisterViewController.m"
-            timestampString = "446911863.518188"
+            timestampString = "486486401.049749"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "-textFieldShouldReturn:"
             landmarkType = "5">
          </BreakpointContent>
@@ -395,22 +395,6 @@
             timestampString = "446911863.518188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "-actionRegister:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zschat/Views/RegisterViewController.m"
-            timestampString = "446911863.518188"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
             endingLineNumber = "79"
             landmarkName = "-actionRegister:"
@@ -424,11 +408,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zschat/Server/MServer.m"
-            timestampString = "486405888.517714"
+            timestampString = "486565408.071202"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "+Request:method:withData:onDelegate:onSelector:"
             landmarkType = "5">
          </BreakpointContent>
@@ -440,11 +424,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zschat/Server/MServer.m"
-            timestampString = "486405888.517714"
+            timestampString = "486565408.071202"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "+Request:method:withData:onDelegate:onSelector:withTimeOut:jsonParserClass:jsonParserFunc:"
             landmarkType = "5">
          </BreakpointContent>
@@ -456,27 +440,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zschat/Server/MServer.m"
-            timestampString = "486405888.517714"
+            timestampString = "486565408.071202"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
-            landmarkName = "+Register:onDelegate:onSelector:withTimeout:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zschat/Server/MServer.m"
-            timestampString = "486405888.517714"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
             landmarkName = "+Request:method:withData:onDelegate:onSelector:withTimeOut:jsonParserClass:jsonParserFunc:"
             landmarkType = "5">
          </BreakpointContent>
@@ -488,29 +456,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zschat/Views/ChatRoomsViewController.m"
-            timestampString = "446907934.447116"
+            timestampString = "486560584.400061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "-getLoginResponse:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zschat/AppDelegate.m"
-            timestampString = "447937183.327275"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "-messagesReceived:"
-            landmarkType = "5">
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "@implementation ChatRoomsViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

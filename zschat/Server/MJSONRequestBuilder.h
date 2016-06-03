@@ -12,6 +12,8 @@
 #import <Foundation/Foundation.h>
 
 #define kPOST @"POST"
+#define kGET @"GET"
+#define kPUT @"PUT"
 
 @interface MJSONRequestBuilder : NSObject
 {

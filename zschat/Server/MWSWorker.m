@@ -34,7 +34,7 @@ NSString * const kGETIPREQUEST =  @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n
 @synthesize jsonParserClass;
 @synthesize jsonParserSelector;
 
-- (MWSWorker *) initMWSWorker:(NSURLRequest *)pRequest onDelegate:(id)pDelegate onThread:(NSThread *)pSenderThread onSelector:(SEL)pSenderSelector jsonParserClass:(id)iParserClass jsonParserFunc:(NSString *)pParserName
+- (MWSWorker *) initMWSWorker:(NSURLRequest *)pRequest onDelegate:(id)pDelegate onThread:(NSThread *)pSenderThread onSelector:(SEL)pSenderSelector jsonParserFunc:(NSString *)pParserName
 {
 //    ZSAppDelegate * app = [ZSAppDelegate shared];webServiceQueue
     delegate = pDelegate;
@@ -50,14 +50,14 @@ NSString * const kGETIPREQUEST =  @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n
             
             if (error)
             {
-                NSLog(@"MSWorker 1:%@",error);
+                NSLog(@"MSWorker 1. responseStatusCode = %ld. Error:%@", (long)responseStatusCode, error);
                 [self setWsresult:error];
                 [senddelegate performSelector:pSenderSelector onThread:pSenderThread withObject:self waitUntilDone:YES];
             }
             else if (responseStatusCode != 200)
             {
-                NSLog(@"MSWorker 2");
-                [self setWsresult:[MServer MError:@"Server error" withCode:e_Error withString:stt]];
+                NSLog(@"MSWorker 2:%ld", (long)responseStatusCode);
+                [self setWsresult:[MServer MError:@"Server error" withCode:e_Error withString:[NSString stringWithFormat:@"%ld", (long)responseStatusCode]]];
                 [senddelegate performSelector:pSenderSelector onThread:pSenderThread withObject: self waitUntilDone:YES];
             }
             else
@@ -73,21 +73,20 @@ NSString * const kGETIPREQUEST =  @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n
                     [senddelegate performSelector:pSenderSelector onThread:pSenderThread withObject:self waitUntilDone:YES];
                 }
                 else {
-                    NSLog(@"MSWorker 50");
-                    NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
-                    if (iParserClass != nil)
+                    NSDictionary * jsonData = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
+                    SEL selector = NSSelectorFromString([pParserName stringByAppendingString:@":"]);
+                    if ([MJSONParsers respondsToSelector:selector])
                     {
-                        SEL selector = NSSelectorFromString([pParserName stringByAppendingString:@":"]);
-                        if ([iParserClass respondsToSelector:selector])
-                        {
-                            NSLog(@"MSWorker 6");
-                            
-                            IMP imp = [iParserClass methodForSelector:selector];
-                            id (*func)(id, SEL, NSDictionary *) = (void *)imp;
-                            [self setWsresult:func(iParserClass, selector, jsonData)];
-                        }
+                        NSLog(@"MSWorker 6. Data:%@", jsonData);
+                        
+                        IMP imp = [MJSONParsers methodForSelector:selector];
+                        id (*func)(id, SEL, NSDictionary *) = (void *)imp;
+                        [self setWsresult:func([[MServer getServer] JSONParsers], selector, jsonData)];
                     }
-                    else [self setWsresult:jsonData];
+                    else
+                    {
+                        [self setWsresult:jsonData];
+                    }
                     [senddelegate performSelector:pSenderSelector onThread:pSenderThread withObject:self waitUntilDone:YES];
 //                    
 //                    for (key in jsonData)

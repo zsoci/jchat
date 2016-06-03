@@ -10,6 +10,8 @@
 #import "Common.h"
 #import "MServer.h"
 #import "ProgressHUD.h"
+#import "utilities.h"
+
 //#import "MXMLParsers.h"
 //#import "SMXMLDocument.h"
 
@@ -58,35 +60,12 @@
 
 - (void)getMessages:(NSString *)pMessage
 {
-//    NSString *username = fieldLoginName.text;
-//    NSString *password = fieldPassword.text;
-//    //    NSString *nickname = fieldNickName.text;
-//    
-//    if ((username.length != 0) && (password.length != 0))
-//    {
-//        [ProgressHUD show:@"Signing in..." Interaction:NO];
-//        [MServer setupUser:username password:password];
-//        //        [MServer getUser][USER_NICKNAME] = nickname;
     if (!getIsActive)
     {
-//        [MServer GetMessages:pMessage messageNr:messageNr onDelegate:self onSelector:@selector(messagesReceived:)];
+        [MServer GetMessages:self onSelector:@selector(messagesReceived:)];
         debugOut(@"Get thrown\n");
         getIsActive = YES;
     }
-//Login:@"" onDelegate:self onSelector:@selector(getLoginResponse:)];
-//        //        [MServer Request:@"Login" withData:<#(NSString *)#> onDelegate:<#(id)#> onSelector:<#(SEL)#>logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error)
-//        //         {
-//        //             if (user != nil)
-//        //             {
-//        //                 ParsePushUserAssign();
-//        //                 [ProgressHUD showSuccess:[NSString stringWithFormat:@"Welcome back %@!", user[PF_USER_FULLNAME]]];
-//        //                 [self dismissViewControllerAnimated:YES completion:nil];
-//        //             }
-//        //             else [ProgressHUD showError:error.userInfo[@"error"]];
-//        //         }];
-//    }
-//    else [ProgressHUD showError:@"Please enter both username and password."];
-//    
 }
 
 - (void) messagesReceived:(id)aObject
@@ -97,25 +76,43 @@
     debugOut(@"Get closed\n");
     if ([anObject isKindOfClass:[NSError class]])
     {
-        debugOut(([NSString stringWithFormat:@"Got error message response data:%@\n",anObject]));
-//        [ProgressHUD dismiss];
-//        ZSMsgView *alert = [[ZSMsgView alloc] initWithTitle:[[(NSError *)anObject userInfo] valueForKey:NSLocalizedDescriptionKey]
-//                                                    message:[[(NSError *)anObject userInfo] valueForKey:NSLocalizedFailureReasonErrorKey]
-//                                                   delegate:self
-//                                                 onSelector:@selector(msgBoxLoginResponse:)
-//                                          cancelButtonTitle:@"OK"
-//                                          otherButtonTitles:@"Register",nil];
-// //       [alert show];
-//        sl
-//        sleep(5000);
-        [self performSelector:@selector(getMessages:) withObject:(id)(@"") afterDelay:1.0];
+        NSInteger errorCode = [(NSError *)anObject code];
+        NSLog(@"Error:%@", anObject);
+        NSLog(@"ErrorCode:%ld", (long)errorCode);
+        if (errorCode == kCFURLErrorUserCancelledAuthentication)
+        {
+            // let us reauthenticate once
+            NSLog(@"Reauthentication is needed");
+            [MServer Login:@"" onDelegate:self onSelector:@selector(reLoginResponse:)];
+        }
+        else
+        {
+            [MServer Login:@"" onDelegate:self onSelector:@selector(reLoginResponse:)];
+        }
     }
     else
     {
-        //        [ProgressHUD showSuccess:[NSString stringWithFormat:@"Welcome back %@!", [MServer getUser][USER_NICKNAME]]];
         NSLog(@"Got message response data:%@",anObject);
         debugOut(([NSString stringWithFormat:@"Got message:%@\n",anObject]));
-//        NSArray * nodes = anObject;
+        NSArray * nodes = anObject;
+        
+        for (NSDictionary * aMessage in nodes)
+        {
+            NSLog(@"aMessage:%@", aMessage);
+            NSInteger msgNr = [[aMessage objectForKey:@"Serial"] integerValue];
+            NSLog(@"msgNr:%ld", (long)msgNr);
+ 
+            [MServer getUser][USER_MSGSERIAL] = [[NSNumber alloc] initWithInteger:msgNr];
+            NSDictionary * msg = [aMessage objectForKey:@"Msg"];
+            NSLog(@"Msg:%@", msg);
+            NSString * command = [msg objectForKey:@"command"];
+            if ([@"refresh_user_profile" isEqualToString:command])
+            {
+                [MServer Login:@"" onDelegate:self onSelector:@selector(reLoginResponse:)];
+            }
+//            [MServer getUser][USER_MSGSERIAL] = [[NSNumber alloc] initWithInteger:1];
+            
+        }
 //        for (SMXMLElement * node in nodes)
 //        {
 //            if ([@"Message" ISNODENAME]) {
@@ -152,44 +149,35 @@
     }
 }
 
+- (void) reLoginResponse:(id)aObject
+{
+    id anObject = [MServer getWSResult:aObject];
+    if ([anObject isKindOfClass:[NSError class]])
+    { // GetLogin did not succeeded
+        LoginUser(self.window.rootViewController);
+    }
+    else
+    {
+        [MServer getUser][USER_NICKNAME] = [(NSDictionary *) anObject objectForKey:@"nick_name"];
+        [MServer getUser][USER_AVATAR] = [(NSDictionary *) anObject objectForKey:@"avatar"];
+        [MServer saveUserdefaults];
+        [profileView viewDidAppear:NO];
+        [self getMessages:@""];
+    }
+}
+
 - (void) getLoginResponse:(id)aObject
 {
     id anObject = [MServer getWSResult:aObject];
     if ([anObject isKindOfClass:[NSError class]])
     { // GetLogin did not succeeded
         [ProgressHUD dismiss];
-//        ZSMsgView *alert = [[ZSMsgView alloc] initWithTitle:[[(NSError *)anObject userInfo] valueForKey:NSLocalizedDescriptionKey]
-//                                                    message:[[(NSError *)anObject userInfo] valueForKey:NSLocalizedFailureReasonErrorKey]
-//                                                   delegate:self
-//                                                 onSelector:@selector(msgBoxLoginResponse:)
-//                                          cancelButtonTitle:@"OK"
-//                                          otherButtonTitles:@"Register",nil];
-//        [alert show];
+        LoginUser(self.window.rootViewController);
     }
     else
     {
-        //        [ProgressHUD showSuccess:[NSString stringWithFormat:@"Welcome back %@!", [MServer getUser][USER_NICKNAME]]];
-        NSLog(@"Got relogin response data:%@",anObject);
-        [profileView viewDidAppear:NO];
-//        NSArray * nodes = anObject;
-//        for (SMXMLElement * node in nodes)
-//        {
-//            if ([@"sNickName" ISNODENAME]) [MServer getUser][USER_NICKNAME] = [node value];
-//            else NSLog(NODE_NOT_PROCESSED,[node name]);
-//        }
-//        [ProgressHUD showSuccess:[NSString stringWithFormat:@"Welcome back %@!", [MServer getUser][USER_NICKNAME]]];
-//        [MServer saveUserdefaults];
-//        [self dismissViewControllerAnimated:YES completion:Nil];
-//        [myAppDelegate getMessages:@""];
-        
-        //UserData * data = anObject;
-        //        [[[[ZSAppDelegate shared] appGlobals] userData] setAvatar:[data avatar]];
-        //        [[[[ZSAppDelegate shared] appGlobals] userData] setExpireTime:[data expireTime]];
-        //        [(ZSRootViewController *)self.parentViewController swapViewController:self toController:@"MainMenuView" duration:VIEWTRANSITIONDURATION options:UIViewAnimationOptionLayoutSubviews | UIViewAnimationOptionTransitionFlipFromLeft completion:nil];
-        //        [[[[ZSAppDelegate shared] appGlobals] rootWindow] runGet];
+        [ProgressHUD showSuccess:[NSString stringWithFormat:@"Welcome %@!", [MServer getUser][USER_NICKNAME]]];
+        [self reLoginResponse:aObject];
     }
-    [self getMessages:@""];
-    
 }
-
 @end
