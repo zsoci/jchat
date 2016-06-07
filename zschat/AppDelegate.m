@@ -158,6 +158,7 @@
     }
     else
     {
+        NSLog(@"In reLoginResponse:%@", anObject);
         [MServer getUser][USER_NICKNAME] = [(NSDictionary *) anObject objectForKey:@"nick_name"];
         [MServer getUser][USER_AVATAR] = [(NSDictionary *) anObject objectForKey:@"avatar"];
         [MServer saveUserdefaults];
@@ -176,8 +177,8 @@
     }
     else
     {
-        [ProgressHUD showSuccess:[NSString stringWithFormat:@"Welcome %@!", [MServer getUser][USER_NICKNAME]]];
         [self reLoginResponse:aObject];
+        [ProgressHUD showSuccess:[NSString stringWithFormat:@"Welcome %@!", [MServer getUser][USER_NICKNAME]]];
     }
 }
 @end
