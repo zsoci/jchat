@@ -161,6 +161,7 @@
         NSLog(@"In reLoginResponse:%@", anObject);
         [MServer getUser][USER_NICKNAME] = [(NSDictionary *) anObject objectForKey:@"nick_name"];
         [MServer getUser][USER_AVATAR] = [(NSDictionary *) anObject objectForKey:@"avatar"];
+        NSLog(@"Nick name:%@", [(NSDictionary *) anObject objectForKey:@"ninck_name"]);
         [MServer saveUserdefaults];
         [profileView viewDidAppear:NO];
         [self getMessages:@""];

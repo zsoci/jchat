@@ -29,7 +29,7 @@
     }
 
     retVal = [NSString stringWithFormat:@"Login failed"];
-    return [jsonData objectForKey:@"app_message"];
+    return [jsonData objectForKey:@"app_msg"];
 }
 
 + (id) RegisterResponse:(NSDictionary *)jsonData
@@ -43,7 +43,7 @@
     }
     
     retVal = [NSString stringWithFormat:@"Login failed"];
-    return [jsonData objectForKey:@"app_message"];
+    return [jsonData objectForKey:@"app_msg"];
 }
 
 + (id) FetchMessageResponse:(NSDictionary *)jsonData;
